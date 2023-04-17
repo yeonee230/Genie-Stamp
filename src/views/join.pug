@@ -1,4 +1,25 @@
 extends base
-
+    
 block content 
-    h1 Join
+    if errorMessage
+        span=errorMessage
+    form(method="post") 
+        label(for="name") 이름 
+        input(type="text", placeholder="이름을 입력하세요.", name="name", id="name" required)    
+        label(for="email") 이메일
+        input(type="email", placeholder="이메일을 입력하세요. ", name="email", id="email",required)    
+        label(for="password") 비밀번호
+        input(type="password", placeholder="비밀번호를 입력하세요.", name="password", required)
+        label(for="password") 비밀번호 확인
+        input(type="password", placeholder="비밀번호를 한번 더 입력하세요.", name="password2", required)    
+        label(for="school") 학교이름
+        input(type="text", placeholder="학교이름을 입력하세요", id="school" name="school")  
+        label(for="email") 학년
+        input(type="text", placeholder="가르치고 있는 학년을 숫자로 입력하세요.", id="grade" name="grade")  
+        label(for="email") 반
+        input(type="text", placeholder="가르치고 있는 반을 숫자로 입력하세요.",id="class" name="class")
+        
+        input(type="submit", value="회원가입")
+    div.auth-switch     
+        span 이미 계정이 있나요? </br>
+        a(href="/login") 로그인 하러가기

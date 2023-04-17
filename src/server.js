@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import rootRouter from "./routers/rootRouter";
+import studentRouter from "./routers/studentRouter";
 
 const app = express();
 const PORT = 3000;
@@ -18,6 +19,6 @@ app.use(logger);
 app.use("/", rootRouter);
 // app.use("/stamp", stampRouter);
 // app.use("/teacher", teacherRouter);
-// app.use("/student", studentRouter);
+app.use("/students", studentRouter);
 
 app.listen(PORT, () => console.log(`⭐️ Conneted server! PORT : ${PORT}`));
