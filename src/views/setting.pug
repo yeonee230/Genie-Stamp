@@ -11,6 +11,9 @@ block content
             +stamp(stampData)
         else 
             li 도장이 없습니다. 칭찬 도장을 추가하세요.  
+        form(action="/setting/stamp/add", method="post")
+            input(type="text", name="title" required) 
+            input(type="submit", value="칭찬 도장 추가")
         button 도장추가하기
     hr    
     div 

@@ -1,10 +1,14 @@
+import StampModel from "../models/Stamp";
+
 export const home = (req, res) => {
   return res.render("home", { pageTitle: "Home" });
 };
 
-export const getSetting = (req, res) => {
-  const stamps =[{title:"도장1"},{title:"도장2"},{title:"도장3"}];
+export const getSetting = async (req, res) => {
   const students =[{index:"1", name:"학생1"}, {index:"2", name:"학생2"}];
+  const stamps = await StampModel.find({});
+  //StampModel.find({}, (error, stamps) =>{ } );
+
   return res.render("setting", { pageTitle: "학생 및 도장 관리", stamps, students });
 };
 
