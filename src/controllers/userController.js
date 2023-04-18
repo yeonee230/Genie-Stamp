@@ -2,8 +2,10 @@ export const home = (req, res) => {
   return res.render("home", { pageTitle: "Home" });
 };
 
-export const getStudents = (req, res) => {
-  return res.render("students", { pageTitle: "학생관리" });
+export const getSetting = (req, res) => {
+  const stamps =[{title:"도장1"},{title:"도장2"},{title:"도장3"}];
+  const students =[{index:"1", name:"학생1"}, {index:"2", name:"학생2"}];
+  return res.render("setting", { pageTitle: "학생 및 도장 관리", stamps, students });
 };
 
 export const getJoin = (req, res) => {

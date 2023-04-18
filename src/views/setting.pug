@@ -1,0 +1,30 @@
+extends base
+include mixins/stamp
+include mixins/student
+
+block content 
+    h1 도장 종류와 학생을 추가해주세요. 
+    span 도장은 5개까지 추가할 수 있습니다. 
+    div 
+        span 도장 종류
+        each stampData in stamps
+            +stamp(stampData)
+        else 
+            li 도장이 없습니다. 칭찬 도장을 추가하세요.  
+        button 도장추가하기
+    hr    
+    div 
+        h2 학생 관리
+        button 학생 추가
+        table 
+            tr 
+                th 번호
+                th 이름
+                th 비밀번호 초기화
+                th 비밀번호 삭제
+            each student in students
+                tr
+                    +student(student)
+            else 
+                li 학생 데이터가 없습니다. 학생을 추가하세요.
+    

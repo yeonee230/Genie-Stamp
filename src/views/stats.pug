@@ -3,3 +3,27 @@ extends base
 block content 
     h1 통계
     include partials/month-nav.pug
+    hr
+    h2 5월
+    table 
+        tr
+            th 번호
+            th 이름
+            th 도장1
+            th 도장2
+            th 이번달 총 개수
+            th 누적 개수
+    hr
+    h2 누적 도장 수 
+        button 도장1 순위
+        button 도장2 순위 
+        button 누적 순위
+    table 
+        tr
+            th 순위
+            th 번호
+            th 이름
+            th 도장1
+            th 도장2
+            th 누적 개수
+
