@@ -3,10 +3,13 @@ import TeacherModel from "../models/Teacher";
 import bcrypt from "bcrypt";
 
 export const home = (req, res) => {
-  const stamps =[{title:"도장1"},{title:"도장2"}];
+  const stamps = [{ title: "도장1" }, { title: "도장2" }];
   //const stamps = [];
-  const students =[{index:"1", name:"학생1",value:"8"}, {index:"2", name:"학생2",value:"2"}];
-  res.render("home", { pageTitle: "칭찬도장판",stamps, students });
+  const students = [
+    { index: "1", name: "학생1", value: "8" },
+    { index: "2", name: "학생2", value: "2" },
+  ];
+  res.render("home", { pageTitle: "칭찬도장판", stamps, students });
 };
 
 export const getSetting = async (req, res) => {
@@ -48,7 +51,7 @@ export const postJoin = async (req, res) => {
     });
   }
 
-  try { 
+  try {
     await TeacherModel.create({
       name,
       email,
@@ -91,8 +94,14 @@ export const postLogin = async (req, res) => {
   req.session.loggedIn = true;
   req.session.user = teacher;
   return res.redirect("/");
-}
+};
 
 export const getLogin2 = (req, res) => {
   return res.render("login2", { pageTitle: "학생용 로그인" });
+};
+
+//------------------ 로그아웃 ------------------
+export const logout = (req, res) => {
+  req.session.destroy();
+  return res.redirect("/");
 };
