@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 
 export const home = (req, res) => {
   const stamps =[{title:"도장1"},{title:"도장2"}];
+  //const stamps = [];
   const students =[{index:"1", name:"학생1",value:"8"}, {index:"2", name:"학생2",value:"2"}];
   res.render("home", { pageTitle: "칭찬도장판",stamps, students });
 };
@@ -87,8 +88,8 @@ export const postLogin = async (req, res) => {
       errorMessage: "잘못된 비밀번호입니다.",
     });
   }
-  // req.session.loggedIn = true;
-  // req.session.user = teacher;
+  req.session.loggedIn = true;
+  req.session.user = teacher;
   return res.redirect("/");
 }
 

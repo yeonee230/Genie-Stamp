@@ -1,20 +1,23 @@
 header 
     a(href="/")
-        h1 🧞‍♂️ Genie Stamp 
+        h1 🧞‍♂️ Genie Stamp
+    if  loggedIn
+        h2 #{loggedUser.name} 선생님 환영합니다.
     nav 
         ul 
-            li 
-                a(href="/board") 칭찬도장판
-            li  
-                a(href="/setting") 학생 및 도장 관리
-            li 
-                a(href="/stats") 통계
-            li 
-                a(href="/join") 회원가입
-            li 
-                a(href="/login") 교사용 로그인
-            li 
-                a(href="/login2") 학생용 로그인
-            li 
-                a(href="/logout") 로그아웃
-            
+            if loggedIn
+                li 
+                    a(href="/board") 칭찬도장판
+                li  
+                    a(href="/setting") 학생 및 도장 관리
+                li 
+                    a(href="/stats") 통계
+                li 
+                    a(href="/logout") 로그아웃
+            else
+                li 
+                    a(href="/join") 회원가입
+                li 
+                    a(href="/login") 교사용 로그인
+                li 
+                    a(href="/login2") 학생용 로그인
