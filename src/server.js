@@ -5,7 +5,7 @@ import rootRouter from "./routers/rootRouter";
 import settingtRouter from "./routers/settingRouter";
 import { localsMiddleware } from "./middlewares";
 import MongoStore from "connect-mongo";
-//import studentRouter from "./routers/studentRouter";
+import studentRouter from "./routers/studentRouter";
 
 const app = express();
 const logger = morgan("dev");
@@ -31,7 +31,7 @@ app.use(localsMiddleware);
 app.use("/", rootRouter);
 // app.use("/stamp", stampRouter);
 // app.use("/teacher", teacherRouter);
-//app.use("/students", studentRouter);
+app.use("/student", studentRouter);
 app.use("/setting", settingtRouter);
 
 export default app;

@@ -1,6 +1,7 @@
 import StampModel from "../models/Stamp";
 import TeacherModel from "../models/Teacher";
 import bcrypt from "bcrypt";
+import StudentModel from "../models/Student";
 
 export const home = (req, res) => {
   const stamps = [{ title: "도장1" }, { title: "도장2" }];
@@ -104,4 +105,27 @@ export const getLogin2 = (req, res) => {
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
+};
+
+//------------------ 학생 추가 ------------------
+export const postAddStudent = async (req, res) => {
+  const { name, index } = req.body;
+  const { _id } = req.session.user;
+  const password = "0000"; //학생 초기 비밀번호 숫자 4자리
+
+  //학생 데이터 저장
+  try {
+    await StudentModel.create({
+      name,
+      index,
+      password,
+      teacherId: _id,
+    });
+    return res.redirect("/setting");
+  } catch (error) {
+    return res.status(400).render("setting", {
+      pageTitle: "학생 및 도장 관리",
+      errorMessage: error._message,
+    });
+  }
 };

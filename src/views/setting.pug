@@ -3,6 +3,8 @@ include mixins/stamp
 include mixins/student
 
 block content 
+    if errorMessage
+        span=errorMessage
     h1 도장 종류와 학생을 추가해주세요. 
     span 도장은 5개까지 추가할 수 있습니다. 
     div 
@@ -18,7 +20,13 @@ block content
     hr    
     div 
         h2 학생 관리
-        button 학생 추가
+        p 학생추가하기
+        form(action="/student/add" method="post")
+            label(for="index") 번호 (숫자를 입력하세요)
+                input(type="number" name="index" id="index" required)
+            label(for="name") 학생이름을 입력하세요. 학생이름이 학생의 아이디가 됩니다. 
+                input(type="text" name="name" id="name" required)
+            input(type="submit", value="학생 추가")
         table 
             tr 
                 th 번호

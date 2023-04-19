@@ -10,7 +10,11 @@ const StudentSchema = new mongoose.Schema({
     stamp3: { type: Number },
     total: { type: Number },
   },
-  teacher: { type: mongoose.Schema.Types.ObjectId, ref: "Teacher" },
+  teacherId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Teacher",
+    required: true,
+  },
 });
 
 const StudentModel = mongoose.model("Student", StudentSchema);
