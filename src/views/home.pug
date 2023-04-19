@@ -2,10 +2,11 @@ extends base
 include mixins/stamp-block
 
 block content
-    h1 home 교사 초기 화면  
-    span 
-        a(href="/setting")  칭찬 도장 및 학생 추가하기
-    hr
+    if loggedUser.students === []
+        h1 home 교사 초기 화면  
+        span 
+            a(href="/setting")  칭찬 도장 및 학생 추가하기
+        hr
     table 
         tr
             th 번호
@@ -23,4 +24,5 @@ block content
                     td=student.name 
                     td 
                         +stamp-block(student)
-    
+            else 
+                li 학생이 없습니다. 학생을 추가하세요.

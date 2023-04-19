@@ -12,7 +12,9 @@ const TeacherSchema = new mongoose.Schema({
 });
 
 TeacherSchema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 5);
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 5);
+  }
 });
 
 const TeacherModel = mongoose.model("Teacher", TeacherSchema);

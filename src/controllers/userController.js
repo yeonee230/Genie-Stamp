@@ -3,23 +3,21 @@ import TeacherModel from "../models/Teacher";
 import bcrypt from "bcrypt";
 import StudentModel from "../models/Student";
 
-export const home = (req, res) => {
+export const home = async (req, res) => {
   const stamps = [{ title: "도장1" }, { title: "도장2" }];
-  //const stamps = [];
-  const students = [
-    { index: "1", name: "학생1", value: "8" },
-    { index: "2", name: "학생2", value: "2" },
-  ];
-  res.render("home", { pageTitle: "칭찬도장판", stamps, students });
+  const students= [{ index: "1", name: "학생1", value: "8" }, { index: "2", name: "학생2", value: "2" }];
+  // const { _id } = req.session.user;
+  
+  // const students = await StudentModel.find({ teacherId: _id });
+  
+  return res.render("home", { pageTitle: "칭찬도장판", stamps, students });
 };
 
 export const getSetting = async (req, res) => {
-  const students = [
-    { index: "1", name: "학생1" },
-    { index: "2", name: "학생2" },
-  ];
-  const stamps = await StampModel.find({});
-  //StampModel.find({}, (error, stamps) =>{ } );
+  const { _id } = req.session.user;
+
+  const stamps = await StampModel.find({ teacherId: _id });
+  const students = await StudentModel.find({ teacherId: _id });
 
   return res.render("setting", {
     pageTitle: "학생 및 도장 관리",
@@ -86,6 +84,7 @@ export const postLogin = async (req, res) => {
     });
   }
   const ok = await bcrypt.compare(password, teacher.password);
+ 
   if (!ok) {
     return res.status(400).render("login", {
       pageTitle,
@@ -113,19 +112,24 @@ export const postAddStudent = async (req, res) => {
   const { _id } = req.session.user;
   const password = "0000"; //학생 초기 비밀번호 숫자 4자리
 
-  //학생 데이터 저장
-  try {
-    await StudentModel.create({
-      name,
-      index,
-      password,
-      teacherId: _id,
-    });
-    return res.redirect("/setting");
-  } catch (error) {
-    return res.status(400).render("setting", {
-      pageTitle: "학생 및 도장 관리",
-      errorMessage: error._message,
-    });
+  const teacher = await TeacherModel.findById(_id);
+  if (!teacher) {
+    return res.sendStatus(404);
   }
+
+  //학생 데이터 저장
+  const newStudent = await StudentModel.create({
+    name,
+    index,
+    password,
+    teacherId: _id,
+  });
+  //선생님 db에 추가 하고 
+  teacher.students.push(newStudent._id);
+  teacher.save();
+
+  //선생님 세션에도 추가해야함. 
+  req.session.user.students.push(newStudent._id);
+
+  return res.redirect("/setting");
 };

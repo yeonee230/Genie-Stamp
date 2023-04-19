@@ -10,5 +10,6 @@ rootRouter.get("/login2", getLogin2);
 rootRouter.get("/stats", getStats);
 rootRouter.route("/join").get(getJoin).post(postJoin);
 rootRouter.get("/logout", logout);
+rootRouter.get("/board", getBoard);
 
 export default rootRouter;

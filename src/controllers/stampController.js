@@ -1,10 +1,13 @@
 import StampModel from "../models/Stamp";
+import StudentModel from "../models/Student";
 
-// export const getBoard = (req, res) => {
-//   const stamps =[{title:"도장1"},{title:"도장2"}];
-//   const students =[{index:"1", name:"학생1",value:"8"}, {index:"2", name:"학생2",value:"2"}];
-//   res.render("home", { pageTitle: "칭찬도장판",stamps, students });
-// };
+export const getBoard = async (req, res) => {
+  const { _id } = req.session.user;
+  const students = await StudentModel.find({ teacherId: _id });
+  const stamps = await StampModel.find({ teacherId: _id });
+
+  return res.render("home", { pageTitle: "칭찬도장판",stamps, students });
+};
 
 export const getStats = (req, res) => {
     res.render("stats", { pageTitle: "통계" });
@@ -16,6 +19,7 @@ export const addStampType = async (req, res) => {
   
   const newStamp = new StampModel({
     title,
+    teacherId: req.session.user._id,
   });
   await newStamp.save();
 
