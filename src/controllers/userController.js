@@ -117,12 +117,24 @@ export const postAddStudent = async (req, res) => {
     return res.sendStatus(404);
   }
 
+  // currStamps: {
+  //   stamp1: { type: Number },
+  //   stamp2: { type: Number },
+  //   stamp3: { type: Number },
+  //   total: { type: Number },
+  // },
+
   //학생 데이터 저장
   const newStudent = await StudentModel.create({
     name,
     index,
     password,
     teacherId: _id,
+    currStamps: {
+      stamp1: 0,
+      stamp2: 0,
+      stamp3: 0,
+    },
   });
   //선생님 db에 추가 하고 
   teacher.students.push(newStudent._id);
