@@ -6,9 +6,7 @@ export const getBoard = async (req, res) => {
   const students = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
   console.log("students : ", students);
-  const array = students.forEach((student) => student.currStamps
-  );
-  console.log("array : ", array);
+  
 
   return res.render("home", { pageTitle: "칭찬도장판",stamps, students });
 };

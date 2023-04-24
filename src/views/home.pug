@@ -21,14 +21,14 @@ block content
             each student in students
                 tr 
                     td=student.index 
-                    td=student.name 
-                    td 
-                        +stamp-block(student.currStamps["stamp1"])
-                    td 
-                        +stamp-block(student.currStamps["stamp2"])
-                    td 
-                        +stamp-block(student.currStamps["stamp3"])
-                    td 
-                        
+                    td(data-stu_id=student._id)=student.name 
+                    each stamp in student.currStamps
+                        if(stamp.month===5)
+                            each info in stamp.stamps
+                                td
+                                    +stamp-block(info)                       
             else 
                 li 학생이 없습니다. 학생을 추가하세요.
+
+block scripts
+    script(src="/static/js/board.js")

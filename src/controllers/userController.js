@@ -5,11 +5,14 @@ import StudentModel from "../models/Student";
 
 export const home = async (req, res) => {
   const stamps = [{ title: "도장1" }, { title: "도장2" }];
-  const students= [{ index: "1", name: "학생1", value: "8" }, { index: "2", name: "학생2", value: "2" }];
+  const students = [
+    { index: "1", name: "학생1", value: "8" },
+    { index: "2", name: "학생2", value: "2" },
+  ];
   // const { _id } = req.session.user;
-  
+
   // const students = await StudentModel.find({ teacherId: _id });
-  
+
   return res.render("home", { pageTitle: "칭찬도장판", stamps, students });
 };
 
@@ -84,7 +87,7 @@ export const postLogin = async (req, res) => {
     });
   }
   const ok = await bcrypt.compare(password, teacher.password);
- 
+
   if (!ok) {
     return res.status(400).render("login", {
       pageTitle,
@@ -130,17 +133,22 @@ export const postAddStudent = async (req, res) => {
     index,
     password,
     teacherId: _id,
-    currStamps: {
-      stamp1: 0,
-      stamp2: 0,
-      stamp3: 0,
-    },
+    currStamps: [
+      {
+        month: 5,
+        stamps: [
+          { stamp_id: "id1", value: 0 },
+          { stamp_id: "id2", value: 0 },
+          { stamp_id: "id3", value: 0 },
+        ],
+      },
+    ],
   });
-  //선생님 db에 추가 하고 
+  //선생님 db에 추가 하고
   teacher.students.push(newStudent._id);
   teacher.save();
 
-  //선생님 세션에도 추가해야함. 
+  //선생님 세션에도 추가해야함.
   req.session.user.students.push(newStudent._id);
 
   return res.redirect("/setting");

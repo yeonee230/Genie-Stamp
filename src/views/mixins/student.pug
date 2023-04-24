@@ -1,6 +1,6 @@
 mixin student(info)
     td=info.index
-    td=info.name 
+    td(data-id=info._id)=info.name 
     td 
         button 비밀번호 초기화
     td 
