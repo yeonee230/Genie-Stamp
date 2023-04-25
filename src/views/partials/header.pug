@@ -1,19 +1,28 @@
 header 
     a(href="/")
         h1 🧞‍♂️ Genie Stamp
-    if  loggedIn
-        h2 #{loggedUser.name} 선생님 환영합니다.
+    if loggedIn
+        if  loggedUser.email
+            h2 #{loggedUser.name} 선생님 환영합니다.
+        else 
+            h2 #{loggedUser.name} 학생 환영합니다.
     nav 
         ul 
             if loggedIn
-                li 
-                    a(href="/board") 칭찬도장판
-                li  
-                    a(href="/setting") 학생 및 도장 관리
-                li 
-                    a(href="/stats") 통계
-                li 
-                    a(href="/logout") 로그아웃
+                if loggedUser.email
+                    li 
+                        a(href="/board") 칭찬도장판
+                    li  
+                        a(href="/setting") 학생 및 도장 관리
+                    li 
+                        a(href="/stats") 통계
+                    li 
+                        a(href="/logout") 로그아웃
+                else 
+                    li 
+                        a(href="/student/password-change") 비밀번호 바꾸기
+                    li 
+                        a(href="/logout") 로그아웃
             else
                 li 
                     a(href="/join") 회원가입

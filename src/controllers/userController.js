@@ -13,6 +13,15 @@ export const home = async (req, res) => {
   return res.render("home", { pageTitle: "칭찬도장판", stamps, students });
 };
 
+export const studentMain = async (req, res) => {
+  const { _id } = req.session.user; // student Id
+  const student = await StudentModel.findById({ _id });
+  const stamps = await StampModel.find({ teacherId: student.teacherId });
+
+  return res.render("students/student-main", { pageTitle: "칭찬도장판", stamps, student });
+
+}
+
 export const getSetting = async (req, res) => {
   const { _id } = req.session.user;
 
@@ -96,8 +105,36 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 
+//------------------ 학생용 로그인 ------------------
 export const getLogin2 = (req, res) => {
   return res.render("login2", { pageTitle: "학생용 로그인" });
+};
+
+export const postLogin2 = async(req, res) => {
+  const { teacher_name, name, password } = req.body;
+  const pageTitle = "학생용 로그인";
+  const teacher = await TeacherModel.findOne({ name:teacher_name });
+
+  const student = await StudentModel.findOne({ name, teacherId: teacher._id});
+
+  if (!teacher) {
+    return res.status(400).render("login2", {
+      pageTitle,
+      errorMessage: "가입되지 않은 선생님입니다. 선생님 이름을 확인해 주세요.",
+    });
+  }
+  console.log("password", password)
+  console.log("password2",student.password)
+
+  if ( password !==  student.password) {
+    return res.status(400).render("login2", {
+      pageTitle,
+      errorMessage: "잘못된 비밀번호입니다.",
+    });
+  }
+  req.session.loggedIn = true;
+  req.session.user = student;
+  return res.redirect("/student-main");
 };
 
 //------------------ 로그아웃 ------------------
@@ -232,3 +269,25 @@ export const delStudent = async(req, res) => {
   await StudentModel.findByIdAndDelete(id);
   return res.redirect("/setting");
 };
+
+//------------------ 학생 비밀번호 변경 ------------------
+export const getPwChange = (req, res) => {
+  return res.render("students/password-change", { pageTitle: "비밀번호 변경"});
+}
+
+export const postPwChange = async(req, res) => {
+  const {password, password2} = req.body;
+  const { _id } = req.session.user;
+  const student = await StudentModel.findById({ _id });
+  const currentPWInDB = student.password;
+  
+  if(password !== password2){
+      return res.status(400).render("students/password-change", { pageTitle: "비밀번호 변경", errorMessage: "비밀번호가 일치하지 않습니다."});
+  }
+
+  student.password = password; //저장할 때 User에 만들어둔 함수가 해시로 바꿔줌.
+  await student.save();
+
+  return res.redirect("/logout");
+
+}

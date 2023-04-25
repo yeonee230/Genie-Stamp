@@ -2,36 +2,40 @@ extends base
 include mixins/stamp-block
 
 block content
-    if loggedUser
-        h1 home 교사 초기 화면  
-        span 
-            a(href="/setting")  칭찬 도장 및 학생 추가하기
-        hr
-    table#boardTable 
-        tr
-            th 번호
-            th 이름
-            each stamp in stamps
-                th=stamp.title
-            else 
-                li 도장이 없습니다. 도장을 추가하세요.
-            th 이번달
-            th 총누적
-        tr 
-            each student in students
+    if loggedIn
+        if loggedUser.email
+            h1 home 교사 초기 화면  
+            span 
+                a(href="/setting")  칭찬 도장 및 학생 추가하기
+            hr
+            table#boardTable 
+                tr
+                    th 번호
+                    th 이름
+                    each stamp in stamps
+                        th=stamp.title
+                    else 
+                        li 도장이 없습니다. 도장을 추가하세요.
+                    th 이번달
+                    th 총누적
                 tr 
-                    td=student.index 
-                    td#studentName(data-stu_id=student._id)=student.name 
-                    each stamp in student.currStamps
-                        each info in stamp.stamps
-                            td#stampBlock
-                                +stamp-block(info)
-                        td#totalValue.totalValue=stamp.total
-                    td#allValue 총 누적 도장수                       
-            else 
-                li 학생이 없습니다. 학생을 추가하세요.
-    hr
-
+                    each student in students
+                        tr 
+                            td=student.index 
+                            td#studentName(data-stu_id=student._id)=student.name 
+                            each stamp in student.currStamps
+                                each info in stamp.stamps
+                                    td#stampBlock
+                                        +stamp-block(info)
+                                td#totalValue.totalValue=stamp.total
+                            td#allValue 총 누적 도장수                       
+                    else 
+                        li 학생이 없습니다. 학생을 추가하세요.
+            hr
+        else 
+            h2 학생 메인 화면
+    else 
+        h2 로그인 해주세요. 
 
 block scripts
     script(src="/static/js/board.js")
