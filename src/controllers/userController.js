@@ -4,11 +4,8 @@ import bcrypt from "bcrypt";
 import StudentModel from "../models/Student";
 
 export const home = async (req, res) => {
-  const stamps = [{ title: "도장1" }, { title: "도장2" }];
-  const students = [
-    { index: "1", name: "학생1", value: "8" },
-    { index: "2", name: "학생2", value: "2" },
-  ];
+  const stamps = [];
+  const students = [];
   // const { _id } = req.session.user;
 
   // const students = await StudentModel.find({ teacherId: _id });
@@ -120,13 +117,11 @@ export const postAddStudent = async (req, res) => {
     return res.sendStatus(404);
   }
 
-  // currStamps: {
-  //   stamp1: { type: Number },
-  //   stamp2: { type: Number },
-  //   stamp3: { type: Number },
-  //   total: { type: Number },
-  // },
-
+  const stamps = await StampModel.find({ teacherId: _id });
+  
+  const stamp2 = stamps.map((item) => ({stamp_id:  String (item._id), value: 0, title: item.title}));
+  console.log("stamp2", stamp2);
+ 
   //학생 데이터 저장
   const newStudent = await StudentModel.create({
     name,
@@ -134,13 +129,9 @@ export const postAddStudent = async (req, res) => {
     password,
     teacherId: _id,
     currStamps: [
-      {
-        month: 5,
-        stamps: [
-          { stamp_id: "id1", value: 0 },
-          { stamp_id: "id2", value: 0 },
-          { stamp_id: "id3", value: 0 },
-        ],
+      { month: new Date().getMonth()+1,
+        stamps: stamp2,
+        total:0,
       },
     ],
   });

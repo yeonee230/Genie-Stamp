@@ -29,7 +29,7 @@ app.use(localsMiddleware);
 
 //multer 미들웨어 
 app.use("/uploads",express.static("uploads"));
-app.use("/static",express.static("assets"));
+app.use("/static",express.static("assets")); //webpack
 
 //라우터 설정
 app.use("/", rootRouter);

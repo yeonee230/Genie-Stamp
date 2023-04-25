@@ -2,7 +2,7 @@ extends base
 include mixins/stamp-block
 
 block content
-    if loggedUser.students === []
+    if loggedUser
         h1 home 교사 초기 화면  
         span 
             a(href="/setting")  칭찬 도장 및 학생 추가하기
@@ -23,10 +23,11 @@ block content
                     td=student.index 
                     td(data-stu_id=student._id)=student.name 
                     each stamp in student.currStamps
-                        if(stamp.month===5)
-                            each info in stamp.stamps
-                                td
-                                    +stamp-block(info)                       
+                        each info in stamp.stamps
+                            td
+                                +stamp-block(info)
+                        td=stamp.total
+                    td 총 누적 도장수                       
             else 
                 li 학생이 없습니다. 학생을 추가하세요.
 
