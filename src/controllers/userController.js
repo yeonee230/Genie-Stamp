@@ -118,10 +118,14 @@ export const postAddStudent = async (req, res) => {
   }
 
   const stamps = await StampModel.find({ teacherId: _id });
-  
-  const stamp2 = stamps.map((item) => ({stamp_id:  String (item._id), value: 0, title: item.title}));
+
+  const stamp2 = stamps.map((item) => ({
+    stamp_id: String(item._id),
+    value: 0,
+    title: item.title,
+  }));
   console.log("stamp2", stamp2);
- 
+
   //학생 데이터 저장
   const newStudent = await StudentModel.create({
     name,
@@ -129,10 +133,7 @@ export const postAddStudent = async (req, res) => {
     password,
     teacherId: _id,
     currStamps: [
-      { month: new Date().getMonth()+1,
-        stamps: stamp2,
-        total:0,
-      },
+      { month: new Date().getMonth() + 1, stamps: stamp2, total: 0 },
     ],
   });
   //선생님 db에 추가 하고
@@ -143,4 +144,39 @@ export const postAddStudent = async (req, res) => {
   req.session.user.students.push(newStudent._id);
 
   return res.redirect("/setting");
+};
+
+//------------------ 학생 개별 도장 업데이트 ------------------
+export const updateStampValue = async (req, res) => {
+  const { id } = req.params; //학생 id
+  const { stam_id, stampNum, totalNum } = req.body; //stamp_id, value
+  const student = await StudentModel.findById(id);
+  //console.log("student", student); 
+    
+
+  const resultMonth = student.currStamps.find(
+    (item) => item.month === new Date().getMonth() + 1
+  );
+  //console.log("result::", resultMonth);//month로 해당 객체 찾는다. 
+
+  const result2 = resultMonth.stamps.find((item) => item.stamp_id === stam_id); //.value = stampNum;
+  const obj = { ...result2, value: stampNum };
+  //console.log("obj:: ", obj); // 수정된 도장 개수 객체에 update한다. 
+  
+  const resultMonthUpdate = { 
+    ...resultMonth,
+    stamps: resultMonth.stamps.map((item) =>
+      item.stamp_id === stam_id ? obj : item
+    ),
+    total: totalNum,
+  };
+  console.log("resultMonthUpdate:: ", resultMonthUpdate);
+  
+  await StudentModel.findByIdAndUpdate(id, {
+    currStamps: student.currStamps.map((item) =>
+      item.month === new Date().getMonth() + 1 ? resultMonthUpdate : item
+    ),
+  });
+
+  return res.status(201).redirect("/board");
 };

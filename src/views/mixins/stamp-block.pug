@@ -1,5 +1,5 @@
 mixin stamp-block(info)
-    div(data-stam_id=info.stamp_id) 
-        a(href="/stamp/#{info}/dec")#btn_dec  -
-        span#stamp_value=info.value
-        button#btn_inc  +
+    div(data-stam_id=info.stamp_id)#stampId
+        button#btnDec  -
+        span#stampValue=info.value
+        button#btnInc  +

@@ -7,7 +7,7 @@ block content
         span 
             a(href="/setting")  칭찬 도장 및 학생 추가하기
         hr
-    table 
+    table#boardTable 
         tr
             th 번호
             th 이름
@@ -21,15 +21,17 @@ block content
             each student in students
                 tr 
                     td=student.index 
-                    td(data-stu_id=student._id)=student.name 
+                    td#studentName(data-stu_id=student._id)=student.name 
                     each stamp in student.currStamps
                         each info in stamp.stamps
-                            td
+                            td#stampBlock
                                 +stamp-block(info)
-                        td=stamp.total
-                    td 총 누적 도장수                       
+                        td#totalValue=stamp.total
+                    td#allValue 총 누적 도장수                       
             else 
                 li 학생이 없습니다. 학생을 추가하세요.
+    hr
+
 
 block scripts
     script(src="/static/js/board.js")
