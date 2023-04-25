@@ -209,3 +209,26 @@ export const updateStampValue2 = async (req, res) => {
 
   return res.status(201).redirect("/board");
 };
+
+//------------------ 학생 삭제 ------------------
+export const delStudent = async(req, res) => {
+  //1. url 파라미터에서 student id 받아온다. 
+  //2. findByIdDelete() 사용한다. 
+  //3. 리다이렉트 
+
+  const {id} = req.params; //studentID
+  console.log("id:: ", id)
+  //const {_id} =req.session.user; //teacherID
+  const student = await StudentModel.findById(id);
+
+  if(!student){
+      return res.status(404).render("404", { pageName : "Student not found!"});
+  }
+
+  if(String(student._id) !== String(id)){
+      return res.status(403).redirect("/setting");
+  }
+
+  await StudentModel.findByIdAndDelete(id);
+  return res.redirect("/setting");
+};

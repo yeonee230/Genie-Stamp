@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     board: Base_url + "board.js",
     boardRe: Base_url + "boardRe.js",
+    setting: Base_url + "setting.js",
   },
   mode: "development",
   plugins: [
