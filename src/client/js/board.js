@@ -6,5 +6,6 @@ const handleInc = () => {
   numStamp.innerText = num + 1;
   console.log("num", num)
 };
+console.log(btn_inc)
 
 btn_inc.addEventListener("click", handleInc);
