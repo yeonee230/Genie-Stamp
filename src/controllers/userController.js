@@ -18,9 +18,12 @@ export const studentMain = async (req, res) => {
   const student = await StudentModel.findById({ _id });
   const stamps = await StampModel.find({ teacherId: student.teacherId });
 
-  return res.render("students/student-main", { pageTitle: "칭찬도장판", stamps, student });
-
-}
+  return res.render("students/student-main", {
+    pageTitle: "칭찬도장판",
+    stamps,
+    student,
+  });
+};
 
 export const getSetting = async (req, res) => {
   const { _id } = req.session.user;
@@ -110,12 +113,12 @@ export const getLogin2 = (req, res) => {
   return res.render("login2", { pageTitle: "학생용 로그인" });
 };
 
-export const postLogin2 = async(req, res) => {
+export const postLogin2 = async (req, res) => {
   const { teacher_name, name, password } = req.body;
   const pageTitle = "학생용 로그인";
-  const teacher = await TeacherModel.findOne({ name:teacher_name });
+  const teacher = await TeacherModel.findOne({ name: teacher_name });
 
-  const student = await StudentModel.findOne({ name, teacherId: teacher._id});
+  const student = await StudentModel.findOne({ name, teacherId: teacher._id });
 
   if (!teacher) {
     return res.status(400).render("login2", {
@@ -123,10 +126,10 @@ export const postLogin2 = async(req, res) => {
       errorMessage: "가입되지 않은 선생님입니다. 선생님 이름을 확인해 주세요.",
     });
   }
-  console.log("password", password)
-  console.log("password2",student.password)
+  console.log("password", password);
+  console.log("password2", student.password);
 
-  if ( password !==  student.password) {
+  if (password !== student.password) {
     return res.status(400).render("login2", {
       pageTitle,
       errorMessage: "잘못된 비밀번호입니다.",
@@ -188,19 +191,18 @@ export const updateStampValue = async (req, res) => {
   const { id } = req.params; //학생 id
   const { stam_id, stampNum, totalNum } = req.body; //stamp_id, value
   const student = await StudentModel.findById(id);
-  //console.log("student", student); 
-    
+  //console.log("student", student);
 
   const resultMonth = student.currStamps.find(
     (item) => item.month === new Date().getMonth() + 1
   );
-  //console.log("result::", resultMonth);//month로 해당 객체 찾는다. 
+  //console.log("result::", resultMonth);//month로 해당 객체 찾는다.
 
   const result2 = resultMonth.stamps.find((item) => item.stamp_id === stam_id); //.value = stampNum;
   const obj = { ...result2, value: stampNum };
-  //console.log("obj:: ", obj); // 수정된 도장 개수 객체에 update한다. 
-  
-  const resultMonthUpdate = { 
+  //console.log("obj:: ", obj); // 수정된 도장 개수 객체에 update한다.
+
+  const resultMonthUpdate = {
     ...resultMonth,
     stamps: resultMonth.stamps.map((item) =>
       item.stamp_id === stam_id ? obj : item
@@ -208,7 +210,7 @@ export const updateStampValue = async (req, res) => {
     total: totalNum,
   };
   console.log("resultMonthUpdate:: ", resultMonthUpdate);
-  
+
   await StudentModel.findByIdAndUpdate(id, {
     currStamps: student.currStamps.map((item) =>
       item.month === new Date().getMonth() + 1 ? resultMonthUpdate : item
@@ -233,7 +235,7 @@ export const updateStampValue2 = async (req, res) => {
   const updatedStamps = stamps.map((stamp) =>
     stamp.stamp_id === stam_id ? { ...stamp, value: stampNum } : stamp
   );
-  
+
   // Update the current month's stamps and total
   const updatedCurrStamps = student.currStamps.map((month) =>
     month.month === new Date().getMonth() + 1
@@ -248,22 +250,22 @@ export const updateStampValue2 = async (req, res) => {
 };
 
 //------------------ 학생 삭제 ------------------
-export const delStudent = async(req, res) => {
-  //1. url 파라미터에서 student id 받아온다. 
-  //2. findByIdDelete() 사용한다. 
-  //3. 리다이렉트 
+export const delStudent = async (req, res) => {
+  //1. url 파라미터에서 student id 받아온다.
+  //2. findByIdDelete() 사용한다.
+  //3. 리다이렉트
 
-  const {id} = req.params; //studentID
-  console.log("id:: ", id)
+  const { id } = req.params; //studentID
+  console.log("id:: ", id);
   //const {_id} =req.session.user; //teacherID
   const student = await StudentModel.findById(id);
 
-  if(!student){
-      return res.status(404).render("404", { pageName : "Student not found!"});
+  if (!student) {
+    return res.status(404).render("404", { pageName: "Student not found!" });
   }
 
-  if(String(student._id) !== String(id)){
-      return res.status(403).redirect("/setting");
+  if (String(student._id) !== String(id)) {
+    return res.status(403).redirect("/setting");
   }
 
   await StudentModel.findByIdAndDelete(id);
@@ -272,22 +274,42 @@ export const delStudent = async(req, res) => {
 
 //------------------ 학생 비밀번호 변경 ------------------
 export const getPwChange = (req, res) => {
-  return res.render("students/password-change", { pageTitle: "비밀번호 변경"});
-}
+  return res.render("students/password-change", { pageTitle: "비밀번호 변경" });
+};
 
-export const postPwChange = async(req, res) => {
-  const {password, password2} = req.body;
+export const postPwChange = async (req, res) => {
+  const { password, password2 } = req.body;
   const { _id } = req.session.user;
   const student = await StudentModel.findById({ _id });
   const currentPWInDB = student.password;
-  
-  if(password !== password2){
-      return res.status(400).render("students/password-change", { pageTitle: "비밀번호 변경", errorMessage: "비밀번호가 일치하지 않습니다."});
+
+  if (password !== password2) {
+    return res
+      .status(400)
+      .render("students/password-change", {
+        pageTitle: "비밀번호 변경",
+        errorMessage: "비밀번호가 일치하지 않습니다.",
+      });
   }
 
   student.password = password; //저장할 때 User에 만들어둔 함수가 해시로 바꿔줌.
   await student.save();
 
   return res.redirect("/logout");
+};
 
-}
+//------------------ 학생 비밀번호 초기화 ------------------
+export const resetPW = async (req, res) => {
+  const { id } = req.params; //studentID
+ 
+  const student = await StudentModel.findById(id);
+
+  if (!student) {
+    return res.status(404).render("404", { pageName: "Student not found!" });
+  }
+
+  student.password = "0000";
+  await student.save();
+  return res.redirect("/setting");
+
+};

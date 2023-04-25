@@ -2,7 +2,8 @@ mixin student(info)
     td=info.index
     td(data-stu_id=info._id)#studentName=info.name 
     td 
-        button#resetPw 비밀번호 초기화
+        //- button#resetPw 비밀번호 초기화
+        a(href=`/student/${info._id}/reset-password`) 비밀번호 초기화
     td 
         //- button#delStudentBtn 학생 삭제
         a(href=`/student/${info._id}/delete`) 학생 삭제
