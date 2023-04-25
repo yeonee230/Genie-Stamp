@@ -26,7 +26,7 @@ block content
                         each info in stamp.stamps
                             td#stampBlock
                                 +stamp-block(info)
-                        td#totalValue=stamp.total
+                        td#totalValue.totalValue=stamp.total
                     td#allValue 총 누적 도장수                       
             else 
                 li 학생이 없습니다. 학생을 추가하세요.

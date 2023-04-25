@@ -180,3 +180,32 @@ export const updateStampValue = async (req, res) => {
 
   return res.status(201).redirect("/board");
 };
+
+//refactoring
+export const updateStampValue2 = async (req, res) => {
+  const { id } = req.params; // Student ID
+  const { stam_id, stampNum, totalNum } = req.body; // Stamp ID and updated values
+  const student = await StudentModel.findById(id);
+
+  // Find the stamps for the current month
+  const { stamps, total } = student.currStamps.find(
+    (item) => item.month === new Date().getMonth() + 1
+  );
+
+  // Update the stamp value and calculate the new total
+  const updatedStamps = stamps.map((stamp) =>
+    stamp.stamp_id === stam_id ? { ...stamp, value: stampNum } : stamp
+  );
+  
+  // Update the current month's stamps and total
+  const updatedCurrStamps = student.currStamps.map((month) =>
+    month.month === new Date().getMonth() + 1
+      ? { ...month, stamps: updatedStamps, total: totalNum }
+      : month
+  );
+
+  // Update the student in the database
+  await StudentModel.findByIdAndUpdate(id, { currStamps: updatedCurrStamps });
+
+  return res.status(201).redirect("/board");
+};

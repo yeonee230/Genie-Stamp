@@ -1,4 +1,4 @@
-const btnInc = document.getElementById("btnInc");
+
 const increaseBtns = document.querySelectorAll("#btnInc");
 const decreaseBtns = document.querySelectorAll("#btnDec");
 const stampValue = document.getElementById("stampValue");

@@ -5,6 +5,7 @@ const Base_url = "./src/client/js/";
 module.exports = {
   entry: {
     board: Base_url + "board.js",
+    boardRe: Base_url + "boardRe.js",
   },
   mode: "development",
   plugins: [

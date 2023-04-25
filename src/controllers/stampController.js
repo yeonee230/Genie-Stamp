@@ -5,11 +5,9 @@ export const getBoard = async (req, res) => {
   const { _id } = req.session.user;
   const students = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
-  const data = students[0].currStamps[0];
-
-  console.log(data);
 
   console.log("get board students : ", students);
+  //students.find((student) => ())
   
 
   return res.render("home", { pageTitle: "칭찬도장판",stamps, students });
