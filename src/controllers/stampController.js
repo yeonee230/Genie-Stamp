@@ -29,3 +29,28 @@ export const addStampType = async (req, res) => {
 
   res.redirect("/setting");
 };
+
+//칭찬 도장 종류 삭제 
+export const deleteStampType = async (req, res) => {
+  const {id} = req.params; //stampID
+  console.log("stamp id:: ", id)
+  const stamp = await StampModel.findById(id);
+
+  if(!stamp){
+      return res.status(404).render("404", { pageName : "stamp not found!"});
+  }
+
+  await StampModel.findByIdAndDelete(id);
+  return res.redirect("/setting");
+}
+
+//칭찬 도장 이름 수정
+export const editStampType = async (req, res) => {
+  const {id} = req.params;//stampID
+
+  await StampModel.findByIdAndUpdate(id, {
+    title: req.body.title,
+  });
+
+  return res.redirect("/setting");
+}
