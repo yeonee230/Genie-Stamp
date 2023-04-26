@@ -1,4 +1,47 @@
-
 //config
-@import "./config/__variables.scss";
+@import "./config/_variables.scss";
 @import "./config/_reset.scss";
+
+//fonts
+@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap");
+
+//components
+@import "./components/header.scss";
+@import "./components/footer.scss";
+
+//screens
+@import "./screens/home.scss";
+@import "./screens/board.scss";
+
+* {
+  a {
+    text-decoration: none;
+  }
+  button {
+    border: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #efeeee;
+  height: 100%; //footer 바닥에 고정
+  font-family: "Jua", sans-serif;
+  position: relative;
+}
+
+main {
+  
+  //padding-bottom: 80px;
+
+  
+  min-height: 100%; //footer 바닥에 고정
+  padding-bottom: 114px;
+
+  //height: 100vh; //이거 있으니까.. footer가 가운데로 감
+  padding-top: 200px;
+}

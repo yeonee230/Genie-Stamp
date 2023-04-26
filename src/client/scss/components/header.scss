@@ -1,0 +1,60 @@
+header {
+  width: 100%;
+  position: fixed;
+  // bottom: 0;
+  // left: 0;
+
+  padding: 20px 0px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+
+  display: flex;
+
+  z-index: 1;
+
+  .header__logo {
+    color: $main;
+    font-family: "Sigmar", cursive;
+    font-size: $large_size;
+    text-decoration: none;
+    margin-left: 30px;
+  }
+  .header__greeting {
+    font-size: 20px;
+    font-family: "Do Hyeon", sans-serif;
+  }
+
+  nav{
+   
+    margin-right: 30px;
+
+    // background-color: transparent;
+    // color: var(--color--red);
+    // font-weight: var(--font-regular);
+    // font-size: var(--font-regular);
+    
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    li {
+      margin-left: 30px;
+      font-size: $regular_size;
+      font-weight: 300;
+      
+      
+
+      a{
+        color: black;
+        padding: 10px;
+        cursor: pointer;
+        
+    
+        
+      }
+    }
+  }
+}

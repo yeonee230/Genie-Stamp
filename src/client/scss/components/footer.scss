@@ -1,0 +1,19 @@
+footer {
+  width: 100%;
+  //position: fixed;
+  padding-top: 2rem;
+
+  height: 80px;
+  // position : relative;
+  // transform : translateY(-100%);
+
+  //footer 바닥에 고정
+  position: absolute;
+  bottom: 0;
+
+  background: $second;
+  padding: 20px 50px;
+  text-align: center;
+  font-size: $small_size;
+  opacity: 0.6;
+}

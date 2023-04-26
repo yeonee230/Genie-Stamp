@@ -4,12 +4,11 @@ include mixins/stamp-block
 block content
     if loggedIn
         if loggedUser.email
-            h1 home 교사 초기 화면  
-            span 
-                a(href="/setting")  칭찬 도장 및 학생 추가하기
-            hr
+            div.container
+                span.greeting ⭐️ #{loggedUser.name} 선생님 환영합니다. ⭐️
+                a(href="/setting").btn__setting  칭찬 도장 및 학생 추가하기
         else 
-            h2 학생 초기 화면 
+            span.header__greeting #{loggedUser.name} 학생 환영합니다.
     else 
         h2 로그인 해주세요. 
 

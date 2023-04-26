@@ -4,6 +4,7 @@ const Base_url = "./src/client/js/";
 
 module.exports = {
   entry: {
+    main: Base_url + "main.js",
     board: Base_url + "board.js",
     boardRe: Base_url + "boardRe.js",
     setting: Base_url + "setting.js",
