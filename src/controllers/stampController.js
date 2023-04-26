@@ -12,7 +12,7 @@ export const getBoard = async (req, res) => {
     currStamps: item.currStamps.filter((stamp) => stamp.month === new Date().getMonth() + 1),
   }));
   
-  return res.render("home", { pageTitle: "칭찬도장판", stamps, students });
+  return res.render("board", { pageTitle: "칭찬도장판", stamps, students });
 };
 
 export const getStats = (req, res) => {

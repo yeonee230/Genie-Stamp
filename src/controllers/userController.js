@@ -112,7 +112,7 @@ export const postLogin = async (req, res) => {
   }
   req.session.loggedIn = true;
   req.session.user = teacher;
-  return res.redirect("/");
+  return res.redirect("/board");
 };
 
 //------------------ 학생용 로그인 ------------------
