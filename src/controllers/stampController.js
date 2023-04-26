@@ -9,14 +9,19 @@ export const getBoard = async (req, res) => {
   //const data = students.forEach(student => ({... student, index:11}));
   const students = dbStudents.map((item) => ({
     ...item._doc,
-    currStamps: item.currStamps.filter((stamp) => stamp.month === new Date().getMonth() + 1),
+    currStamps: item.currStamps.filter(
+      (stamp) => stamp.month === new Date().getMonth() + 1
+    ),
   }));
-  
+
   return res.render("board", { pageTitle: "칭찬도장판", stamps, students });
 };
 
-export const getStats = (req, res) => {
-  res.render("stats", { pageTitle: "통계" });
+export const getStats = async (req, res) => {
+  const { _id } = req.session.user;
+  const stamps = await StampModel.find({ teacherId: _id });
+  
+  return res.render("stats", { pageTitle: "통계", stamps});
 };
 
 //칭찬 도장 종류 추가
@@ -55,4 +60,59 @@ export const editStampType = async (req, res) => {
   });
 
   return res.redirect("/setting");
+};
+
+//-------------- 누적 도장 랭킹 가져오기 --------------
+//이번달 누적 도장 랭킹 가져오기
+export const rankingTotalStamps1 = async (req, res) => {
+  const { _id } = req.session.user;
+  const dbStudents = await StudentModel.find({ teacherId: _id });
+  const stamps = await StampModel.find({ teacherId: _id });
+  // console.log("dbStudents:: ", dbStudents);
+
+  const students = dbStudents.map((item) => ({
+    ...item._doc,
+    currStamps: item.currStamps.filter(
+      (stamp) => stamp.month === new Date().getMonth() + 1
+    ),
+  }));
+  // console.log("students:: ", students);
+
+  const filteredStudents = students.sort(
+    (a, b) => b.currStamps[0].total - a.currStamps[0].total
+  );
+  // console.log("filteredStudents:: ", filteredStudents);
+
+  const rankingStudnets = filteredStudents.map((item, index) => ({
+    ...item,
+    ranking: index + 1,
+  }));
+  // console.log("rankingStudnets:: ", rankingStudnets);
+  return res.render("stats", {
+    pageTitle: "도장 통계",
+    stamps,
+    rankingStudnets,
+  });
+};
+// rankingTotalStamps 함수 리팩토링
+export const rankingTotalStamps = async (req, res) => {
+  const { _id } = req.session.user;
+  const dbStudents = await StudentModel.find({ teacherId: _id });
+  const stamps = await StampModel.find({ teacherId: _id });
+
+  const filteredStudents = dbStudents.map((student) => ({
+    ...student._doc,
+    currStamps: student.currStamps.filter(
+      (stamp) => stamp.month === new Date().getMonth() + 1
+    ),
+  }))
+  .filter((student) => student.currStamps.length > 0)
+  .sort((a, b) => b.currStamps[0].total - a.currStamps[0].total)
+  .map((student, index) => ({ ...student, ranking: index + 1 }));
+
+  return res.render("stats", {
+    pageTitle: "도장 통계",
+    stamps,
+    rankingStudnets: filteredStudents,
+  });
 };
