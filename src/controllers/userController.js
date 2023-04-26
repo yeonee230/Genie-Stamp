@@ -12,16 +12,23 @@ export const home = async (req, res) => {
 
   return res.render("home", { pageTitle: "칭찬도장판", stamps, students });
 };
-
+//---------------- 학생 메인 페이지 모여주기 ----------------
 export const studentMain = async (req, res) => {
   const { _id } = req.session.user; // student Id
   const student = await StudentModel.findById({ _id });
   const stamps = await StampModel.find({ teacherId: student.teacherId });
 
+  //이번달 기록만 가져올 수 있도록
+  const currValue = student.currStamps.filter((item) =>
+    item.month === new Date().getMonth() + 1
+  );
+
+  const newStudent = {... student._doc,currStamps : currValue}
+
   return res.render("students/student-main", {
     pageTitle: "칭찬도장판",
     stamps,
-    student,
+    newStudent,
   });
 };
 
@@ -196,6 +203,7 @@ export const updateStampValue = async (req, res) => {
   const resultMonth = student.currStamps.find(
     (item) => item.month === new Date().getMonth() + 1
   );
+  
   //console.log("result::", resultMonth);//month로 해당 객체 찾는다.
 
   const result2 = resultMonth.stamps.find((item) => item.stamp_id === stam_id); //.value = stampNum;
@@ -237,10 +245,10 @@ export const updateStampValue2 = async (req, res) => {
   );
 
   // Update the current month's stamps and total
-  const updatedCurrStamps = student.currStamps.map((month) =>
-    month.month === new Date().getMonth() + 1
-      ? { ...month, stamps: updatedStamps, total: totalNum }
-      : month
+  const updatedCurrStamps = student.currStamps.map((item) =>
+    item.month === new Date().getMonth() + 1
+      ? { ...item, stamps: updatedStamps, total: totalNum }
+      : item
   );
 
   // Update the student in the database
@@ -281,7 +289,7 @@ export const postPwChange = async (req, res) => {
   const { password, password2 } = req.body;
   const { _id } = req.session.user;
   const student = await StudentModel.findById({ _id });
-  const currentPWInDB = student.password;
+  //const currentPWInDB = student.password;
 
   if (password !== password2) {
     return res

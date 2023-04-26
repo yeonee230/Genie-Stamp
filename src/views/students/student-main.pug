@@ -14,9 +14,9 @@ block content
             th 이번달
             th 총누적
         tr 
-            td=student.index 
-            td#studentName(data-stu_id=student._id)=student.name 
-            each stamp in student.currStamps
+            td=newStudent.index 
+            td#studentName(data-stu_id=newStudent._id)=newStudent.name 
+            each stamp in newStudent.currStamps
                 each info in stamp.stamps
                     td#stampBlock
                         div#stampId
