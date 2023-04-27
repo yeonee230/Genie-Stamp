@@ -2,8 +2,8 @@ extends ../base
 include ../mixins/stamp-block
 
 block content
-    h1 이번달 #{loggedUser.name}의 칭찬 도장 현황
-    table#boardTable 
+    h1.title #{loggedUser.name}의 칭찬 도장 현황
+    table#boardTable.student__table 
         tr
             th 번호
             th 이름
@@ -12,7 +12,7 @@ block content
             else 
                 li 도장이 없습니다. 
             th 이번달
-            th 총누적
+            //- th 총누적
         tr 
             td=newStudent.index 
             td#studentName(data-stu_id=newStudent._id)=newStudent.name 
@@ -22,7 +22,7 @@ block content
                         div#stampId
                             span#stampValue=info.value
                 td#totalValue.totalValue=stamp.total
-            td#allValue 총 누적 도장수                       
+            //- td#allValue 도장수                       
 
     //- div.wrapper 
     //-     div 스티커1 밥

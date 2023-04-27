@@ -3,7 +3,7 @@ mixin student(info)
     td(data-stu_id=info._id)#studentName=info.name 
     td 
         //- button#resetPw 비밀번호 초기화
-        a(href=`/student/${info._id}/reset-password`) 비밀번호 초기화
+        a.btn(href=`/student/${info._id}/reset-password`) 비밀번호 초기화
     td 
         //- button#delStudentBtn 학생 삭제
-        a(href=`/student/${info._id}/delete`) 학생 삭제
+        a.btn(href=`/student/${info._id}/delete`) 학생 삭제

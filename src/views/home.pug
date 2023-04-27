@@ -10,7 +10,9 @@ block content
         else 
             span.header__greeting #{loggedUser.name} 학생 환영합니다.
     else 
-        h2 로그인 해주세요. 
+        div.homeContainer
+            h2.greeting ⭐️ Genie Stamp (지니 스탬프)에 오신 걸 환영합니다. ⭐️
+            h2.greeting ⭐️ 로그인해 주세요 ⭐️
 
 block scripts
     script(src="/static/js/board.js")

@@ -2,9 +2,8 @@ extends base
 include mixins/stamp-block
 
 block content 
-    h1 통계
+    h1.title 월별 도장 통계
     include partials/month-nav.pug
-    hr
     //- h2 5월
     //- table 
     //-     tr
@@ -17,13 +16,15 @@ block content
     //-         th 이번달 총 개수
     //-         th 누적 개수
     //- hr
-    h2 누적 도장 수 
-    if stamps
-        each stamp in stamps
-            button(disabled) #{stamp.title} 도장 순위 확인 
-    a(href="/stamp/total-ranking") 누적 순위 확인하기
+    h1.title 누적 도장 수
+    h2.setting__explain ❗️ 학생별 도장 누적 순위를 확인할 수 있습니다.
+    div.ranking-btn__list  
+        if stamps
+            each stamp in stamps
+                a(disabled).btn__stats.unabled-btn #{stamp.title} 도장 순위 확인 
+        a.btn__stats(href="/stamp/total-ranking") 누적 순위 확인하기
     if rankingStudnets
-        table 
+        table.status__table 
             tr
                 th 순위
                 th 번호
@@ -45,7 +46,5 @@ block content
                                     div#stampId
                                         span#stampValue=info.value
                             td#totalValue.totalValue=stamp.total
-                        td#allValue 총 누적 도장수 
+                        //- td#allValue 총 누적 도장수 
     else
-        h4 누적 순위를 클릭하면 학생별 도장 누적 순위를 확인할 수 있습니다.
-

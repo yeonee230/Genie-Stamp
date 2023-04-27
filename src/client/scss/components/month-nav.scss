@@ -1,0 +1,22 @@
+@media (max-width: 40rem) {
+  .month-nav {
+    background-color: white;
+    margin: 0 0.5rem;
+    border-radius: 0.7rem;
+    padding: 1.8rem 0.5rem;
+    display: flex;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3.3rem;
+    a {
+      padding: 0.5rem;
+      background-color: $main;
+      color: black;
+      margin: 0.2rem;
+      border-radius: 0.7rem;
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+}

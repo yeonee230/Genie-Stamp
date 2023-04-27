@@ -28,19 +28,6 @@
 }
 
 @media (max-width: 40rem) {
-  .setting__title {
-    font-size: 28px;
-    background-color: $main;
-
-    padding: 1rem;
-    margin: 1.5rem 0.5rem;
-    border-radius: 0.7rem;
-
-    box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
-  }
-
   .title2 {
     margin-top: 4rem;
   }
@@ -104,16 +91,15 @@
       font-weight: lighter;
       //border: 1px solid blueviolet;
     }
-
-    a {
-      background-color: $main;
-      border-radius: 0.3rem;
-      margin: 0.5rem 0.5rem;
-      width: 30px;
-      padding: 0.5rem 0.8rem;
-      font-size: 20px;
-      color: black;
-      cursor: pointer;
-    }
+  }
+  .btn {
+    background-color: $main;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0.5rem;
+    width: 30px;
+    padding: 0.5rem 0.8rem;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
   }
 }
