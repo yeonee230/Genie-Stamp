@@ -1,37 +1,74 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.title {
+  font-size: 30px;
+  padding: auto;
+  margin-bottom: 20px;
+}
+
+.boardTable {
+  font-size: $regular_size;
+}
+
+th {
+  text-align: center;
+  //padding: 30px;
+  font-weight: bold;
+}
+
+td {
+  text-align: center;
+  //padding: 20px;
+  font-weight: lighter;
+}
+
+button {
+  background-color: $main;
+  border-radius: 0.5rem;
+  //   padding: 5px 12px;
+  margin: 0 0.5rem;
+  font-size: $medium_size;
+  width: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 40rem) {
   .title {
-    font-size: 30px;
-    padding: auto;
-    margin-bottom: 20px;
+    font-size: 23px;
+    padding: 0 0.5rem;
   }
-  table {
-    font-size: $regular_size;
-
+  .boardTable {
+    margin-top: 1.2rem;
+    margin-bottom: 2rem;
+    font-size: 18px;
+    padding: 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    border-collapse: separate;
+    border-spacing: 1rem 2rem;
     th {
-      text-align: center;
-      padding: 30px;
-      font-weight: bold;
-      //border: 1px solid salmon;
+      font-size: 19px;
     }
 
-    td {
-      text-align: center;
-      padding: 20px;
-      font-weight: lighter;
-      //border: 1px solid blueviolet;
+    .studentBox {
+      //background-color: rebeccapurple;
+      td {
+        font-size: 18px;
+      }
+      .stampBlock {
+        div {
+          display: flex;
+          flex-direction: column-reverse;
+          span {
+            margin: 0.5rem 0;
+          }
+        }
+      }
     }
+    // td {
+
+    // }
 
     button {
       background-color: $main;
-      border-radius: 0.5rem;
-      //   padding: 5px 12px;
-      margin: 0 0.5rem;
-      font-size: $medium_size;
-      width: 30px;
-      cursor: pointer;
     }
   }
 }

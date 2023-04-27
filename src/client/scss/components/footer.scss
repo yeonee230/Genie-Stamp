@@ -1,19 +1,26 @@
 footer {
-  width: 100%;
-  //position: fixed;
-  padding-top: 2rem;
-
   height: 80px;
-  // position : relative;
-  // transform : translateY(-100%);
 
-  //footer 바닥에 고정
+  //*footer 바닥에 고정
   position: absolute;
   bottom: 0;
+  // left: 0;
+  // right: 0;
+  width: 100%;
 
+  //footer style
   background: $second;
   padding: 20px 50px;
   text-align: center;
   font-size: $small_size;
   opacity: 0.6;
+}
+
+@media (max-width: 40rem) {
+ footer{
+  span{
+    display: block;
+    font-size: 12px;
+  }
+ }
 }

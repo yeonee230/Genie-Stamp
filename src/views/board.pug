@@ -5,8 +5,9 @@ block content
     if loggedIn
         if loggedUser.email
             div.container
-                span.title #{loggedUser.grade}학년 #{loggedUser.classNum}반 칭찬 도장판
-                table#boardTable 
+            span.title #{loggedUser.grade}학년 #{loggedUser.classNum}반 칭찬 도장판
+            div.tableContainer
+                table#boardTable.boardTable
                     tr
                         th 번호
                         th 이름
@@ -14,19 +15,17 @@ block content
                             th=stamp.title
                         else 
                             li 도장이 없습니다. 도장을 추가하세요.
-                        th 이번달
-                        th 총누적
+                        th 총 도장 <br/> 개수 
                     tr 
                         each student in students
-                            tr 
+                            tr.studentBox
                                 td=student.index 
                                 td#studentName(data-stu_id=student._id)=student.name 
                                 each stamp in student.currStamps
                                     each info in stamp.stamps
-                                        td#stampBlock
+                                        td#stampBlock.stampBlock
                                             +stamp-block(info)
-                                    td#totalValue.totalValue=stamp.total
-                                td#allValue 총 누적 도장수                       
+                                    td#totalValue.totalValue=stamp.total             
                         else 
                             li 학생이 없습니다. 학생을 추가하세요.
         else 

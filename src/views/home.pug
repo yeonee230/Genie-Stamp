@@ -4,7 +4,7 @@ include mixins/stamp-block
 block content
     if loggedIn
         if loggedUser.email
-            div.container
+            div.homeContainer
                 span.greeting ⭐️ #{loggedUser.name} 선생님 환영합니다. ⭐️
                 a(href="/setting").btn__setting  칭찬 도장 및 학생 추가하기
         else 
