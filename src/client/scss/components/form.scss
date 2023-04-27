@@ -14,11 +14,11 @@ form {
     padding: 16px 20px;
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: black;
+    background-color: white;
     margin-bottom: 10px;
     margin-top: 7px;
     font-size: 16px;
-    color: white;
+    color: black;
     width: 90%;
     &::placeholder {
       color: rgba(255, 255, 255, 0.7);
@@ -29,6 +29,7 @@ form {
     background-color: $main;
     color: black;
     cursor: pointer;
+    text-align:center
   }
 
   .auth-switch {
@@ -51,3 +52,42 @@ form {
 //       cursor: pointer;
 //       display: block;
 //   }
+
+@media (max-width: 40rem) {
+
+  form {
+    // max-width: 420px;
+    margin: 0 0.5rem;
+    padding: 2rem;
+  }
+
+  input:not([type="range"]) {
+    all: unset;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: white;
+    margin-bottom: 10px;
+    margin-top: 7px;
+    font-size: 18px;
+    color: black;
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  input[type="submit"]{
+    background-color: $main;
+    color: black;
+    cursor: pointer;
+    text-align:center
+    
+  }
+
+  label{
+    margin-top: 0.8rem;
+    font-size: 18px;
+  }
+  
+}

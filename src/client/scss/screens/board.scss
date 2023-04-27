@@ -32,18 +32,32 @@ button {
 
 @media (max-width: 40rem) {
   .title {
-    font-size: 23px;
-    padding: 0 0.5rem;
+    font-size: 28px;
+    background-color: $main;
+
+    padding: 1rem;
+    margin: 1.5rem 0.5rem;
+    border-radius: 0.7rem;
+
+    box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
   }
   .boardTable {
-    margin-top: 1.2rem;
+    margin: 0 0.5rem;
+    margin-top: 2.3rem;
     margin-bottom: 2rem;
     font-size: 18px;
-    padding: 0 0.5rem;
     display: flex;
     justify-content: center;
     border-collapse: separate;
     border-spacing: 1rem 2rem;
+
+    background-color: white;
+    border-radius: 0.7rem;
+    box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
     th {
       font-size: 19px;
     }
@@ -51,7 +65,7 @@ button {
     .studentBox {
       //background-color: rebeccapurple;
       td {
-        font-size: 18px;
+        font-size: 20px;
       }
       .stampBlock {
         div {

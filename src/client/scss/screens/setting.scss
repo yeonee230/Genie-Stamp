@@ -1,13 +1,101 @@
+.setting__table {
+  font-size: $regular_size;
 
+  th {
+    text-align: center;
+    //padding: 30px;
+    font-weight: bold;
+    //border: 1px solid salmon;
+  }
 
-table {
+  td {
+    text-align: center;
+    //padding: 20px;
+    font-weight: lighter;
+    //border: 1px solid blueviolet;
+  }
+
+  a {
+    background-color: $main;
+    border-radius: 0.3rem;
+    margin: 0 0.5rem;
+    width: 30px;
+    padding: 0.5rem 0.8rem;
     font-size: $regular_size;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 40rem) {
+  .setting__title {
+    font-size: 28px;
+    background-color: $main;
+
+    padding: 1rem;
+    margin: 1.5rem 0.5rem;
+    border-radius: 0.7rem;
+
+    box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+  }
+
+  .title2 {
+    margin-top: 4rem;
+  }
+
+  .setting__explain {
+    margin: 0.7rem 0.5rem;
+  }
+
+  .stamp-list {
+    background-color: white;
+    margin: 0 0.5rem;
+    border-radius: 0.7rem;
+    padding: 1.8rem 0.5rem;
+
+    h2 {
+      margin: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 0.7rem;
+      text-align: center;
+      border: 2px $main solid;
+    }
+
+    div {
+      background-color: #ffe68c;
+      border-radius: 0.7rem;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5rem;
+      margin: 0.5rem 0.7rem;
+    }
+  }
+
+  .setting__form {
+    margin-bottom: 2rem;
+  }
+
+  .setting__table {
+    font-size: 20px;
+    margin: 1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 0.7rem;
+    box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+
+    //table 칸 사이 간격
+    border-collapse: separate;
+    border-spacing: 0.3rem 2.5rem;
 
     th {
       text-align: center;
-      //padding: 30px;
+
       font-weight: bold;
-      //border: 1px solid salmon;
     }
 
     td {
@@ -20,11 +108,12 @@ table {
     a {
       background-color: $main;
       border-radius: 0.3rem;
-      margin: 0 0.5rem;
+      margin: 0.5rem 0.5rem;
       width: 30px;
       padding: 0.5rem 0.8rem;
-      font-size: $regular_size;
+      font-size: 20px;
       color: black;
       cursor: pointer;
     }
   }
+}
