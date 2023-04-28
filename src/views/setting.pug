@@ -13,7 +13,7 @@ block content
         each stampData in stamps
             +stamp(stampData)
         else 
-            li 도장이 없습니다. 칭찬 도장을 추가하세요.  
+            h3.no-data__message ⚠️ 도장이 없습니다. 칭찬 도장을 추가하세요.  
         form(action="/setting/stamp/add", method="post")
             label(for="index") 도장이름을 입력하세요. (ex. 밥, 독서 .. )
             input(type="text", name="title" placeholder="" required) 
@@ -40,7 +40,7 @@ block content
                 tr
                     +student(student)
             else 
-                li 학생 데이터가 없습니다. 학생을 추가하세요.
+                h3.no-data__message ⚠️ 학생 데이터가 없습니다. 학생을 추가하세요.
 
 block scripts
     script(src="/static/js/setting.js")

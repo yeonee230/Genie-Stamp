@@ -32,7 +32,7 @@ block content
                 each stamp in stamps
                     th=stamp.title
                 else 
-                    li 도장이 없습니다.
+                    h3.no-data__message ⚠️ 도장이 없습니다. 도장을 추가하세요.
                 th 누적 개수
             tr 
                 each student in rankingStudnets
@@ -47,4 +47,7 @@ block content
                                         span#stampValue=info.value
                             td#totalValue.totalValue=stamp.total
                         //- td#allValue 총 누적 도장수 
+                else 
+                    h3.no-data__message ⚠️ 학생 데이터가 없습니다.
     else
+        //- h3.no-data__message ⚠️ 학생이 없습니다. 학생을 추가하세요.

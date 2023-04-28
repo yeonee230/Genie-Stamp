@@ -85,4 +85,13 @@ button {
       background-color: $main;
     }
   }
+
+  .no-data__message{
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 1rem;
+    margin: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    font-size: 20px;
+    border: 1px rgba(255, 0, 0, 0.8) solid;
+  }
 }
