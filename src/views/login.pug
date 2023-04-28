@@ -4,12 +4,14 @@ block content
     if errorMessage
         span=errorMessage
     h1.title 교사용 로그인
-    form(method="post")
-        label(for="email") 이메일 
-        input(type="email", placeholder="이메일을 입력하세요.", name="email" id="email" required)    
-        label(for="password") 비밀번호
-        input(type="password", placeholder="비밀번호를 입력하세요.", name="password" id="password" required)
-        input(type="submit" value="로그인")
+    div.login-form__container
+        form(method="post").login-teacher__form
+            label(for="email") 이메일<br/>
+            input(type="email", placeholder="이메일을 입력하세요.", name="email" id="email" required)     
+            label(for="password") 비밀번호<br/>
+            input(type="password", placeholder="비밀번호를 입력하세요.", name="password" id="password" required)
+            input(type="submit" value="로그인")
     div.auth-switch
         h2 계정이 없나요?
-        a(href="/join") 회원가입 하러가기
+        a(href="/join") 회원가입 하러가기 
+            i.fa-solid.fa-arrow-right

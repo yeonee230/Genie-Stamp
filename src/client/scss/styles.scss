@@ -47,9 +47,6 @@ body {
   min-height: 100%;
   position: relative;
   padding-bottom: 80px; /* footer height */
-
-
-
 }
 
 main {
@@ -60,6 +57,43 @@ main {
 
 .unabled-btn {
   opacity: 0.5;
+}
+
+.no-data__message {
+  background-color: rgba(255, 0, 0, 0.5);
+  padding: 1.2rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  font-size: 23px;
+  border: 1px rgba(255, 0, 0, 0.8) solid;
+}
+
+.student__table {
+  font-size: 23px;
+  margin: 0 0.5rem;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  //border: 1px solid $main;
+  border-radius: 0.7rem;
+
+  border-collapse: separate;
+  border-spacing: 0.5rem 1.5rem;
+
+  background-color: white;
+  border: 1px solid rgba($color: #5f5e5e, $alpha: 0.2);
+
+
+  th {
+    width: 4rem;
+  }
+
+  td{
+    text-align: center;
+  }
+
+  
 }
 
 @media (max-width: 40rem) {
@@ -74,26 +108,31 @@ main {
     //margin-bottom: 80px; //*footer 바닥에 고정, footer height
   }
 
-  .student__table {
+  .no-data__message {
+    padding: 1rem;
+    margin: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
     font-size: 20px;
+  }
+
+  .student__table {
+    font-size: 18px;
     margin: 0 0.5rem;
     margin-bottom: 3rem;
     margin-top: 2rem;
-    display: flex;
-    justify-content: center;
     //border: 1px solid $main;
     border-radius: 0.7rem;
 
     border-collapse: separate;
-    border-spacing: 0.5rem 1.5rem;
+    border-spacing: 0.7rem;
 
-    background-color: white;
-    box-shadow: 6px 7px 34px -15px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 6px 7px 34px -15px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 6px 7px 34px -15px rgba(0, 0, 0, 0.75);
+    // th {
+     
+    // }
 
-    th {
-      width: 3.5rem;
+    td{
+      
+     font-size: 18px;
     }
   }
 }

@@ -12,6 +12,10 @@ header {
   background-color: white;
   z-index: 1;
 
+  box-shadow: 2px 2px 18px -1px rgba(143,143,143,0.79);
+-webkit-box-shadow: 2px 2px 18px -1px rgba(143,143,143,0.79);
+-moz-box-shadow: 2px 2px 18px -1px rgba(143,143,143,0.79);
+
   // display: flex;
   // justify-content: space-between;
   // align-items: center;
