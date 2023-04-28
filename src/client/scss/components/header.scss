@@ -3,6 +3,10 @@ header {
   width: 100%; //!
   position: fixed; //!
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   //header style
   padding: 20px 0px;
   background-color: white;
@@ -24,8 +28,9 @@ header {
     font-family: "Do Hyeon", sans-serif;
   }
 
-  nav {
+  .navbar {
     margin-right: 30px;
+    display: inline-block;
   }
 
   ul {
@@ -34,7 +39,7 @@ header {
     align-items: center;
     li {
       margin-left: 30px;
-      font-size: $regular_size;
+      font-size: 20px;
       font-weight: 300;
 
       a {
@@ -46,33 +51,45 @@ header {
   }
 }
 
+
 @media (max-width: 40rem) {
+
   header {
     padding: 10px 0px;
+    display: block;
+    div{
+      margin: 1rem 0;
+    }
     .header__logo {
-      font-size: 32px;
-      h1{
+      font-size: 28px;
+      margin-left: 0.5rem;
+  
+      h1 {
         margin-left: 1rem;
       }
-     
     }
-    nav{
+    .navbar {
       margin: 0 0.5rem;
       padding: 0 0.5rem;
       margin-top: 1rem;
-    ul {
-      display: flex;
-      text-align: center;
-      li {
-        font-size: 1.2rem;
-        margin: 0;
-        a{
-          padding: 0.5rem;
-          width: 30px;
-          span{display:none;}
+      width: 100%;
+     
+      ul {
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+        li {
+          font-size: 1.2rem;
+          margin: 0;
+          a {
+            padding: 0.5rem;
+            width: 30px;
+            span {
+              display: none;
+            }
+          }
         }
       }
     }
-  }
   }
 }

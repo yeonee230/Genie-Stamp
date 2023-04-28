@@ -47,12 +47,19 @@ body {
   min-height: 100%;
   position: relative;
   padding-bottom: 80px; /* footer height */
+
+
+
 }
 
 main {
   //width: 100%;
-  padding-top: 200px;
+  padding: 100px;
   //margin-bottom: 80px; //*footer 바닥에 고정, footer height
+}
+
+.unabled-btn {
+  opacity: 0.5;
 }
 
 @media (max-width: 40rem) {
@@ -62,6 +69,7 @@ main {
 
   main {
     //width: 100%;
+    padding: 0;
     padding-top: 130px;
     //margin-bottom: 80px; //*footer 바닥에 고정, footer height
   }

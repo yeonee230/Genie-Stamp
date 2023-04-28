@@ -1,23 +1,45 @@
 .title {
   font-size: 30px;
-  padding: auto;
-  margin-bottom: 20px;
+  background-color: $main;
+
+  padding: 1.5rem;
+  margin: 1.5rem 0.5rem;
+  border-radius: 0.7rem;
+  margin-bottom: 2rem;
+
+  box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
 }
 
 .boardTable {
   font-size: $regular_size;
-}
+  margin: 0 0.5rem;
+  margin-top: 2.3rem;
+  margin-bottom: 2rem;
 
-th {
-  text-align: center;
-  //padding: 30px;
-  font-weight: bold;
-}
+  display: flex;
+  justify-content: center;
+  border-collapse: separate;
+  border-spacing: 1.5rem 2rem;
 
-td {
-  text-align: center;
-  //padding: 20px;
-  font-weight: lighter;
+  background-color: white;
+  border-radius: 0.7rem;
+  box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
+
+  th {
+    font-size: 21px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  td {
+    text-align: center;
+    font-size: 22px;
+    font-weight: lighter;
+  }
 }
 
 button {
@@ -47,26 +69,21 @@ button {
     margin: 0 0.5rem;
     margin-top: 2.3rem;
     margin-bottom: 2rem;
-    font-size: 18px;
+    font-size: 15px;
     display: flex;
     justify-content: center;
     border-collapse: separate;
     border-spacing: 1rem 2rem;
 
-    background-color: white;
-    border-radius: 0.7rem;
-    box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 6px 7px 34px -9px rgba(0, 0, 0, 0.75);
-    th {
-      font-size: 19px;
-    }
+    // th {
+    //   //font-size: 18px;
+    // }
 
     .studentBox {
       //background-color: rebeccapurple;
-      td {
-        font-size: 20px;
-      }
+      // td {
+      //   //font-size: 18px;
+      // }
       .stampBlock {
         div {
           display: flex;
@@ -77,16 +94,13 @@ button {
         }
       }
     }
-    // td {
-
-    // }
 
     button {
       background-color: $main;
     }
   }
 
-  .no-data__message{
+  .no-data__message {
     background-color: rgba(255, 0, 0, 0.5);
     padding: 1rem;
     margin: 0.5rem 0.7rem;
