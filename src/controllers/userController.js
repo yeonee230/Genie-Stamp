@@ -125,8 +125,8 @@ export const postLogin2 = async (req, res) => {
   const pageTitle = "학생용 로그인";
   const teacher = await TeacherModel.findOne({ name: teacher_name.trim()});
 
-  const student = await StudentModel.findOne({ name : name.trim(), teacherId: teacher._id });
-  //const student = await StudentModel.findOne({name : name.trim()});
+  //const student = await StudentModel.findOne({ name : name.trim(), teacherId: teacher._id });
+  const student = await StudentModel.findOne({name : name.trim()});
   
 
   if (!teacher) {
