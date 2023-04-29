@@ -9,8 +9,6 @@ module.exports = {
     boardRe: Base_url + "boardRe.js",
     setting: Base_url + "setting.js",
   },
-  // mode: "development",
-  // watch: true,
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
