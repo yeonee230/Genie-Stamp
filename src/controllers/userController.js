@@ -61,7 +61,7 @@ export const postJoin = async (req, res) => {
       errorMessage: "비밀번호가 일치하지 않습니다.",
     });
   }
-  const exists = await TeacherModel.exists({ email });
+  const exists = await TeacherModel.exists({ email: email.trim() });
   if (exists) {
     return res.status(400).render("join", {
       pageTitle,
@@ -71,11 +71,11 @@ export const postJoin = async (req, res) => {
 
   try {
     await TeacherModel.create({
-      name,
-      email,
-      grade,
-      classNum,
-      school,
+      name: name.trim(),
+      email: email.trim(),
+      grade: grade.trim(),
+      classNum: classNum.trim(),
+      school : school.trim(),
       password,
     });
     return res.redirect("/login");
@@ -95,7 +95,7 @@ export const getLogin = (req, res) => {
 export const postLogin = async (req, res) => {
   const { email, password } = req.body;
   const pageTitle = "교사용 로그인";
-  const teacher = await TeacherModel.findOne({ email });
+  const teacher = await TeacherModel.findOne({ email: email.trim() });
   if (!teacher) {
     return res.status(400).render("login", {
       pageTitle,
@@ -123,10 +123,11 @@ export const getLogin2 = (req, res) => {
 export const postLogin2 = async (req, res) => {
   const { teacher_name, name, password } = req.body;
   const pageTitle = "학생용 로그인";
-  const teacher = await TeacherModel.findOne({ name: teacher_name });
+  const teacher = await TeacherModel.findOne({ name: teacher_name.trim()});
 
   //const student = await StudentModel.findOne({ name, teacherId: teacher._id });
-  const student = await StudentModel.findOne({name});
+  const student = await StudentModel.findOne({name : name.trim()});
+  
 
   if (!teacher) {
     return res.status(400).render("login2", {
@@ -138,11 +139,11 @@ export const postLogin2 = async (req, res) => {
   if (!student) {
     return res.status(400).render("login2", {
       pageTitle,
-      errorMessage: "가입되어 있지 않습니다. 다시 확인해 주세요.",
+      errorMessage: "가입되어 있은 학생입니다. 다시 확인해 주세요.",
     });
   }
 
-  if (password !== student.password) {
+  if (password.trim() !== student.password.trim()) {
     return res.status(400).render("login2", {
       pageTitle,
       errorMessage: "잘못된 비밀번호입니다.",
@@ -181,8 +182,8 @@ export const postAddStudent = async (req, res) => {
 
   //학생 데이터 저장
   const newStudent = await StudentModel.create({
-    name,
-    index,
+    name: name.trim(),
+    index: index.trim(),
     password,
     teacherId: _id,
     currStamps: [
