@@ -31,8 +31,6 @@ app.use(localsMiddleware);
 //multer 미들웨어 
 //app.use("/uploads",express.static("uploads"));
 app.use("/static",express.static("assets")); //webpack
-//app.use("/images", express.static('images')); 
-//app.use('/favicon.ico', express.static('images/favicon.ico'));
 //TODO:express-flash 미들웨어 추가
 
 //라우터 설정
