@@ -4,6 +4,10 @@
   "description": "stamp system for an elementary school teacher",
   "main": "init.js",
   "scripts": {
+    "start" : "node build/init.js",
+    "build" : "npm run build:server && npm run build:assets",
+    "build:server" : "babel src -d build --ignore src/client",
+    "build:assets" : "webpack --mode=production",
     "dev:server": "nodemon",
     "dev:assets": "webpack"
   },
@@ -22,7 +26,7 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
+    "@babel/cli": "^7.21.5",
     "@babel/core": "^7.21.4",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.21.4",

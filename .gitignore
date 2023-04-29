@@ -2,3 +2,4 @@
 .env
 /assets
 /.vscode
+/build

@@ -9,13 +9,13 @@ module.exports = {
     boardRe: Base_url + "boardRe.js",
     setting: Base_url + "setting.js",
   },
-  mode: "development",
+  // mode: "development",
+  // watch: true,
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
     }),
   ],
-  watch: true,
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
