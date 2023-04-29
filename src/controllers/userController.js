@@ -125,8 +125,8 @@ export const postLogin2 = async (req, res) => {
   const pageTitle = "학생용 로그인";
   const teacher = await TeacherModel.findOne({ name: teacher_name.trim()});
 
-  //const student = await StudentModel.findOne({ name, teacherId: teacher._id });
-  const student = await StudentModel.findOne({name : name.trim()});
+  const student = await StudentModel.findOne({ name : name.trim(), teacherId: teacher._id });
+  //const student = await StudentModel.findOne({name : name.trim()});
   
 
   if (!teacher) {
@@ -139,7 +139,7 @@ export const postLogin2 = async (req, res) => {
   if (!student) {
     return res.status(400).render("login2", {
       pageTitle,
-      errorMessage: "가입되어 있은 학생입니다. 다시 확인해 주세요.",
+      errorMessage: "가입되어 있지 않은 학생입니다. 다시 확인해 주세요.",
     });
   }
 

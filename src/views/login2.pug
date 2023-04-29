@@ -2,7 +2,7 @@ extends base
     
 block content 
     if errorMessage
-        span=errorMessage
+        h3.no-data__message=errorMessage
     h1.title 학생용 로그인
     div.login-form__container
         form(method="post").login-student__form

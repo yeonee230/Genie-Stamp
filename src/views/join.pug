@@ -3,7 +3,7 @@ extends base
 block content
     div.container
         if errorMessage
-            span=errorMessage
+            h3.no-data__message=errorMessage
         h1.title 회원가입
         form(method="post").join__form 
             label(for="name") 이름
@@ -20,7 +20,6 @@ block content
             input(type="text", placeholder="가르치고 있는 학년을 숫자로 입력하세요.", id="grade" name="grade")  
             label(for="classNum") 반
             input(type="text", placeholder="가르치고 있는 반을 숫자로 입력하세요.",id="classNum" name="classNum")
-            
             input(type="submit", value="회원가입").button_join
         div.auth-switch     
             h2 이미 계정이 있나요? </br>
