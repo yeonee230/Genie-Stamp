@@ -5,3 +5,5 @@ export const localsMiddleware = (req, res, next) => {
   console.log("session user : ", req.session.user);
   next();
 };
+
+//TODO:url protectMiddleware 만들어야함
