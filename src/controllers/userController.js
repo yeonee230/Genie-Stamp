@@ -125,7 +125,8 @@ export const postLogin2 = async (req, res) => {
   const pageTitle = "학생용 로그인";
   const teacher = await TeacherModel.findOne({ name: teacher_name });
 
-  const student = await StudentModel.findOne({ name, teacherId: teacher._id });
+  //const student = await StudentModel.findOne({ name, teacherId: teacher._id });
+  const student = await StudentModel.findOne({name});
 
   if (!teacher) {
     return res.status(400).render("login2", {
@@ -133,8 +134,13 @@ export const postLogin2 = async (req, res) => {
       errorMessage: "가입되지 않은 선생님입니다. 선생님 이름을 확인해 주세요.",
     });
   }
-  console.log("password", password);
-  console.log("password2", student.password);
+  
+  if (!student) {
+    return res.status(400).render("login2", {
+      pageTitle,
+      errorMessage: "가입되어 있지 않습니다. 다시 확인해 주세요.",
+    });
+  }
 
   if (password !== student.password) {
     return res.status(400).render("login2", {
