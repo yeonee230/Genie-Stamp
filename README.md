@@ -7,7 +7,7 @@
 https://genie-stamp.herokuapp.com/
 
 ## 개발 목표
-* [jinee-stamp(ver.1)](https://github.com/yeonee230/Jinee-Stamp)에서 기능 확장
+* [Jinee-Stamp(ver.1)](https://github.com/yeonee230/Jinee-Stamp)에서 기능 확장
 * 숙련도 향상을 위해서 내가 사용해본 기술들을 사용하기 (NodeJS, Pug, SCSS, MongoDB)
 * 실제 서비스로 제공할 수 있게 만들어 보기 
 
@@ -24,4 +24,3 @@ https://genie-stamp.herokuapp.com/
 
 ## 기간
 * 2023년 4월 15일 (토) ~ 2023년 4월 30일 (토)
-
