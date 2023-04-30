@@ -1,7 +1,15 @@
 header 
     div
-        a(href="/").header__logo
-            span 🧞‍♂️ Genie Stamp
+        if loggedIn
+                if loggedUser.email
+                    a(href="/").header__logo
+                        span 🧞‍♂️ Genie Stamp
+                else 
+                    a(href="/student-main").header__logo
+                        span 🧞‍♂️ Genie Stamp
+        else 
+             a(href="/").header__logo
+                span 🧞‍♂️ Genie Stamp
     nav.navbar 
         ul 
             if loggedIn
