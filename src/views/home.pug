@@ -7,8 +7,9 @@ block content
             div.home-container
                 span.greeting ⭐️ #{loggedUser.name} 선생님 환영합니다! ⭐️
                 a(href="/setting").btn__setting  칭찬 도장 및 학생 추가하기
-        else 
-            span.header__greeting #{loggedUser.name} 학생 환영합니다.
+        else
+            div.home-container 
+                span.greeting #{loggedUser.name} 학생 환영합니다.
     else 
         div.home-container
             h2.greeting ⭐️ Genie Stamp (지니 스탬프)에 오신 걸 환영합니다. ⭐️

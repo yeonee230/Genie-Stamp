@@ -10,7 +10,7 @@ export const home = async (req, res) => {
 
   // const students = await StudentModel.find({ teacherId: _id });
 
-  return res.render("home", { pageTitle: "칭찬도장판", stamps, students });
+  return res.render("home", { pageTitle: "칭찬도장판"});
 };
 //---------------- 학생 메인 페이지 모여주기 ----------------
 export const studentMain = async (req, res) => {
@@ -112,7 +112,7 @@ export const postLogin = async (req, res) => {
   }
   req.session.loggedIn = true;
   req.session.user = teacher;
-  return res.redirect("/board");
+  return res.redirect("/");
 };
 
 //------------------ 학생용 로그인 ------------------
