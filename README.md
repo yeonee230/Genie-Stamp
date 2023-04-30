@@ -7,7 +7,7 @@
 https://genie-stamp.herokuapp.com/
 
 ## 개발 목표
-* jinee-stamp(ver.1)에서 기능 확장
+* [jinee-stamp(ver.1)](https://github.com/yeonee230/Jinee-Stamp)에서 기능 확장
 * 숙련도 향상을 위해서 내가 사용해본 기술들을 사용하기 (NodeJS, Pug, SCSS, MongoDB)
 * 실제 서비스로 제공할 수 있게 만들어 보기 
 
@@ -15,7 +15,6 @@ https://genie-stamp.herokuapp.com/
 * Front-end : Pug, JS, SCSS
 * Back-end : NodeJS, Express
 * DB : MongoDB
-* Deploy : Heroku
 
 ## 주요 기능
 * 교사가 학생의 칭찬도장을 실시간으로 추가/삭제 할 수 있습니다. 
