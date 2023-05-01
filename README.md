@@ -52,8 +52,8 @@ https://genie-stamp.herokuapp.com/
 | <img width="300" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png"> | <img width="300" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png"> | <img width="300" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png">
 
 
-|   교사 메인 화면 | 칭찬 도장판  | 메인페이지 |
-| :-------------------------: | :-------------------------: |  :-------------------------: | 
+|   교사 메인 화면 | 칭찬 도장판  | 
+| :-------------------------: | :-------------------------: |  
 | <img width="300" alt="Screenshot 2023-05-01 at 4 45 57 PM" src="https://user-images.githubusercontent.com/115549917/235425099-eabf6084-26c3-4f7b-a99d-060ca4b81d55.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 46 09 PM" src="https://user-images.githubusercontent.com/115549917/235425152-f0aa3d8d-a994-4d58-8fd7-30ef3c85dd09.png">  
 
 
@@ -86,7 +86,7 @@ https://genie-stamp.herokuapp.com/
 * 매월 1일 도장판 자동리셋 
 * 세션이 없을 때 세션 필요한 url들어갔을 경우 관리  
 
-## 겪었던 어려움
+<!-- ## 겪었던 어려움
 1. 디비 구성 
 2. 통계 
-3. CSS 
+3. CSS  -->
