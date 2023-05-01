@@ -49,11 +49,18 @@ https://genie-stamp.herokuapp.com/
 
 |  회원가입  | 교사용 로그인1 | 교사용 로그인2 |
 | :-------------------------: | :-------------------------: | :-------------------------: | 
-| <img width="378" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png"> |
-<img width="378" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png"> |
-<img width="378" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png"> |
+| <img width="300" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png"> |
+<img width="300" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png"> |
+<img width="300" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png"> |
+
+## :pushpin: 기능 소개
+|   랜딩페이지 및 온보딩 | 로그인 및 회원가입 | 메인페이지 |
+| :-------------------------: | :-------------------------: |  :-------------------------: | 
+| <img width="300" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png">  | <img width="300" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png">
 
 
+|  홈페이지  | 기록 페이지 | 커뮤니티 페이지 |
+| :-------------------------: | :-------------------------: | :-------------------------: | 
 * 교사 메인
 <img width="378" alt="Screenshot 2023-05-01 at 4 45 57 PM" src="https://user-images.githubusercontent.com/115549917/235425099-eabf6084-26c3-4f7b-a99d-060ca4b81d55.png">
 
