@@ -47,31 +47,31 @@ https://genie-stamp.herokuapp.com/
 ---
 ## :pushpin: 모바일 화면(이미지)
 
-|  회원가입  | 교사용 로그인1 | 교사용 로그인2 |
+|  회원가입  | 교사용 로그인 1 | 교사용 로그인 2 |
 | :-------------------------: | :-------------------------: | :-------------------------: | 
 | <img width="300" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png"> | <img width="300" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png"> | <img width="300" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png">
 
 
 |   교사 메인 화면 | 칭찬 도장판  | 메인페이지 |
 | :-------------------------: | :-------------------------: |  :-------------------------: | 
-| <img width="378" alt="Screenshot 2023-05-01 at 4 45 57 PM" src="https://user-images.githubusercontent.com/115549917/235425099-eabf6084-26c3-4f7b-a99d-060ca4b81d55.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 46 09 PM" src="https://user-images.githubusercontent.com/115549917/235425152-f0aa3d8d-a994-4d58-8fd7-30ef3c85dd09.png">  
+| <img width="300" alt="Screenshot 2023-05-01 at 4 45 57 PM" src="https://user-images.githubusercontent.com/115549917/235425099-eabf6084-26c3-4f7b-a99d-060ca4b81d55.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 46 09 PM" src="https://user-images.githubusercontent.com/115549917/235425152-f0aa3d8d-a994-4d58-8fd7-30ef3c85dd09.png">  
 
 
-|  학생 및 도장 관리  |
+|  학생 및 도장 관리1  | 학생 및 도장 관리 2 | 학생 및 도장 관리 3 |
 | :-------------------------: | :-------------------------: | :-------------------------: | 
-| <img width="378" alt="Screenshot 2023-05-01 at 4 46 16 PM" src="https://user-images.githubusercontent.com/115549917/235425197-42b71a18-6daa-4dff-a1fa-a8031f7e1c2e.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 46 22 PM" src="https://user-images.githubusercontent.com/115549917/235425207-c7ec42cf-dfc3-4c6c-ab43-1e478ead459f.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 46 26 PM" src="https://user-images.githubusercontent.com/115549917/235425211-bd533606-fa49-4083-84fa-5e1d7d24d5b9.png">
+| <img width="300" alt="Screenshot 2023-05-01 at 4 46 16 PM" src="https://user-images.githubusercontent.com/115549917/235425197-42b71a18-6daa-4dff-a1fa-a8031f7e1c2e.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 46 22 PM" src="https://user-images.githubusercontent.com/115549917/235425207-c7ec42cf-dfc3-4c6c-ab43-1e478ead459f.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 46 26 PM" src="https://user-images.githubusercontent.com/115549917/235425211-bd533606-fa49-4083-84fa-5e1d7d24d5b9.png">
 
-|  도장 통계  |
+|  도장 통계1  | 도장 통계 2 | 도장 통계 3 |
 | :-------------------------: | :-------------------------: | :-------------------------: | 
-| <img width="378" alt="Screenshot 2023-05-01 at 4 46 35 PM" src="https://user-images.githubusercontent.com/115549917/235425311-c5db7e69-05c4-4653-a599-d1a8d409a16f.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 46 39 PM" src="https://user-images.githubusercontent.com/115549917/235425316-6fdfc909-64da-4465-81bd-69dcdec00abd.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 46 49 PM" src="https://user-images.githubusercontent.com/115549917/235425321-2a274415-6cb7-43d1-bdab-71cea5b1e1d3.png">
+| <img width="300" alt="Screenshot 2023-05-01 at 4 46 35 PM" src="https://user-images.githubusercontent.com/115549917/235425311-c5db7e69-05c4-4653-a599-d1a8d409a16f.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 46 39 PM" src="https://user-images.githubusercontent.com/115549917/235425316-6fdfc909-64da-4465-81bd-69dcdec00abd.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 46 49 PM" src="https://user-images.githubusercontent.com/115549917/235425321-2a274415-6cb7-43d1-bdab-71cea5b1e1d3.png">
 
-|  학생용 로그인  |
-| :-------------------------: | :-------------------------: | :-------------------------: | 
-| <img width="378" alt="Screenshot 2023-05-01 at 4 45 09 PM" src="https://user-images.githubusercontent.com/115549917/235424996-bfed9499-3443-4d8a-9cd6-e3e4e37335bf.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 45 19 PM" src="https://user-images.githubusercontent.com/115549917/235425030-a9df399f-e926-4864-95d5-4fd0562884b3.png">
+|  학생용 로그인 1  | 학생용 로그인 2  |
+| :-------------------------: | :-------------------------: | 
+| <img width="300" alt="Screenshot 2023-05-01 at 4 45 09 PM" src="https://user-images.githubusercontent.com/115549917/235424996-bfed9499-3443-4d8a-9cd6-e3e4e37335bf.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 45 19 PM" src="https://user-images.githubusercontent.com/115549917/235425030-a9df399f-e926-4864-95d5-4fd0562884b3.png">
 
 |  학생 메인 화면  | 학생 비밀번호 변경 화면  |
 | :-------------------------: | :-------------------------: | 
-| <img width="378" alt="Screenshot 2023-05-01 at 4 47 33 PM" src="https://user-images.githubusercontent.com/115549917/235425397-9375f4cf-e9a8-4beb-8224-beeefc57a953.png">| <img width="378" alt="Screenshot 2023-05-01 at 4 47 41 PM" src="https://user-images.githubusercontent.com/115549917/235425402-e9ecc25c-8769-446d-84d7-eb5b6e8cdb66.png">
+| <img width="300" alt="Screenshot 2023-05-01 at 4 47 33 PM" src="https://user-images.githubusercontent.com/115549917/235425397-9375f4cf-e9a8-4beb-8224-beeefc57a953.png">| <img width="300" alt="Screenshot 2023-05-01 at 4 47 41 PM" src="https://user-images.githubusercontent.com/115549917/235425402-e9ecc25c-8769-446d-84d7-eb5b6e8cdb66.png">
 
 ---
 ## 기간
