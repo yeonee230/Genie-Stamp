@@ -23,7 +23,7 @@ https://genie-stamp.herokuapp.com/
 * 반응형으로 구현했습니다.
 
 ---
-### 데스크탑 화면 및 기능 시연 
+### 데스크탑 화면 및 기능 시연 (영상)
 
 ### 교사 
 * 회원가입 & 교사 로그인/로그아웃 
@@ -45,13 +45,13 @@ https://genie-stamp.herokuapp.com/
 <video width="200" height="140" src="https://user-images.githubusercontent.com/115549917/235422896-73f2f3e2-9514-4584-9874-5e88ce38397e.mov"></video>
 
 ---
-### 모바일 화면
-* 회원가입
-<img width="378" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png">
+### 모바일 화면(이미지)
 
-* 교사용 로그인
-<img width="378" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png">
-<img width="378" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png">
+|  회원가입  | 교사용 로그인1 | 교사용 로그인2 |
+| :-------------------------: | :-------------------------: | :-------------------------: | 
+| <img width="378" alt="Screenshot 2023-05-01 at 4 44 20 PM" src="https://user-images.githubusercontent.com/115549917/235424907-af10575b-e62e-445e-a96f-edade6feaaa9.png"> |
+<img width="378" alt="Screenshot 2023-05-01 at 4 44 57 PM" src="https://user-images.githubusercontent.com/115549917/235424960-2525a006-9068-46b0-9d11-df0899704f87.png"> |
+<img width="378" alt="Screenshot 2023-05-01 at 4 45 48 PM" src="https://user-images.githubusercontent.com/115549917/235425073-c35b084e-e129-434f-a66d-e5632cb90112.png"> |
 
 
 * 교사 메인
