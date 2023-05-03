@@ -7,3 +7,21 @@ export const localsMiddleware = (req, res, next) => {
 };
 
 //TODO:url protectMiddleware 만들어야함
+//로그인한 사용자만 사용 가능.
+export const protectMiddeleware = (req, res, next) => {
+  if (req.session.loggedIn) {
+    return next();
+  } else {
+    //req.flash("error", "Not Authorized");
+    return res.redirect("/login");
+  }
+};
+//로그인하지 않은 사용자만 사용 가능.
+export const publicOnlyMiddleware = (req, res, next) => {
+  if (!req.session.loggedIn) {
+    return next();
+  } else {
+    //req.flash("error", "Not Authorized");
+    return res.redirect("/");
+  }
+};
