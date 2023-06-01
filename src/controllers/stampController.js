@@ -123,12 +123,12 @@ export const rankingEachMonthStamps = async (req, res) => {
     .map((student) => ({
       ...student._doc,
       currStamps: student.currStamps.filter(
-        (stamp) => stamp.month === month
+        (stamp) => (stamp.month === month)
       ),
     }))
-    .filter((student) => student.currStamps.length > 0)
-    .sort((a, b) => b.currStamps[0].total - a.currStamps[0].total)
-    .map((student, index) => ({ ...student, ranking: index + 1 }));
+    // .filter((student) => student.currStamps.length > 0)
+    // .sort((a, b) => b.currStamps[0].total - a.currStamps[0].total)
+    // .map((student, index) => ({ ...student, ranking: index + 1 }));
 
     console.log('✅ filteredStudents: ', filteredStudents);
     
