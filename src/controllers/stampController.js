@@ -151,7 +151,7 @@ async function onMonthChanged(newMonth, req) {
       student.currStamps.push({
         month: newMonth,
         stamps: stamps.map((stamp) => ({
-          stamp_id: stamp._doc._id,
+          stamp_id: stamp._doc._id.toString(),
           title: stamp._doc.title,
           value: 0,
         })),
