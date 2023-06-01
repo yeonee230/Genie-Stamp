@@ -44,9 +44,7 @@ block content
                             td#stampBlock
                                 div#stampId
                                     span#stampValue=stamp.total
-                                    span#stampValue #{stamp.total} 개별누적
-                        td#totalValue.totalValue=totalNow
-                        td#totalValue.totalValue #{totalNow} 전체누적
+                        td#totalValue.totalValue=student.totalNow
                         //- td#allValue 총 누적 도장수 
                 else 
                     h3.no-data__message ⚠️ 학생 데이터가 없습니다.
