@@ -137,6 +137,7 @@ export const rankingThisMonthStamps = async (req, res) => {
 export const rankingTotalStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
+  const stamps = await StampModel.find({ teacherId: _id });
 
   //누적 도장 값을 추가한 학생 배열을 만든다. 
   const updatedStudents = dbStudents.map(function(student) {
