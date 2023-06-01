@@ -138,6 +138,7 @@ export const rankingTotalStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
 
+  console.log(dbStudents)
   for (const student of dbStudents) {
     const totalArr = student.currStamps.map((stamp) => {
       stamp.total;
@@ -147,9 +148,9 @@ export const rankingTotalStamps = async (req, res) => {
     totalArr.forEach(function (num) {
       totalValue += num;
     });
-    console.log(`${student.name}의 totalValue`, totalValue);
+    //console.log(`${student.name}의 totalValue`, totalValue);
   }
-  
+
 };
 
 // 월 변경 시 실행할 함수
