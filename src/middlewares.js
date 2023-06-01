@@ -33,7 +33,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
 export const monthCheckMiddleware = (req, res, next) => {
   console.log('월 변경 감지 ---- ');
   let currentMonth = null; // 현재 월 변수
-  const time = 1000 * 10; //하루  1000*60*60*24
+  const time = 1000 * 60; //하루  1000*60*60*24
   setInterval(() => {
     const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
     if (currentMonth !== newMonth) {
@@ -49,11 +49,16 @@ export const monthCheckMiddleware = (req, res, next) => {
 // 월 변경 시 실행할 함수
 async function onMonthChanged(newMonth, req) {
   try {
+    console.log('onMonthChanged 실행')
     // 월이 변경되었을 때 호출되는 콜백 함수로, 여기에 MongoDB에 월을 추가하는 로직을 작성합니다.
     const { _id } = req.session.user; // 선생님이 누군지 찾고
+    console.log('_id : ', _id)
     const dbStudents = await StudentModel.find({ teacherId: _id }).exec(); // 선생님의 학생들을 모두 찾고
     const stamps = await StampModel.find({ teacherId: _id }).exec(); // 선생님의 도장을 모두 찾고
 
+    console.log('dbStudents : ', dbStudents)
+    console.log('stamps : ', stamps)
+    
     // 학생 도장데이터에 새로운 month 추가하기
     for (const student of dbStudents) {
       student.currStamps.push({ month: newMonth, stamps, total: 0 });
