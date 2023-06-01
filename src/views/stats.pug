@@ -40,12 +40,13 @@ block content
                         td #{student.ranking} 위
                         td=student.index 
                         td#studentName(data-stu_id=student._id)=student.name 
-                        each stamp in student.currStamps
-                            each info in stamp.stamps
-                                td#stampBlock
-                                    div#stampId
-                                        span#stampValue=info.value
+                        each stamp in student.updatedStamps
+                            td#stampBlock
+                                div#stampId
+                                    span#stampValue=stamp.total
+                                    span#stampValue #{stamp.total} 개별누적
                         td#totalValue.totalValue=totalNow
+                        td#totalValue.totalValue #{totalNow} 전체누적
                         //- td#allValue 총 누적 도장수 
                 else 
                     h3.no-data__message ⚠️ 학생 데이터가 없습니다.
