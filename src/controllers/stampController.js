@@ -170,7 +170,7 @@ export const rankingTotalStamps = async (req, res) => {
       return acc;
     }, []);
 
-    console.log('updatedStamps:: ',updatedStamps);
+    console.log('⭐️ updatedStamps:: ',updatedStamps);
     
     
     return {
@@ -180,6 +180,8 @@ export const rankingTotalStamps = async (req, res) => {
     };
     });
 
+    console.log('⭐️⭐️ updatedStudents:: ',updatedStudents);
+    
     //학생 순위매기기 
     const sortedStudents = updatedStudents.sort(function(a, b) {
     const sumA = a.totalNow;
