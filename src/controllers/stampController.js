@@ -144,9 +144,38 @@ export const rankingTotalStamps = async (req, res) => {
     const totalSum = student.currStamps.reduce(function(acc, curr) {
     return acc + curr.total;
     }, 0);
+
+
+     //도장별 누적 합계 구하기 
+     const updatedStamps = student.currStamps.reduce(function(acc, curr) {
+      curr.stamps.forEach(function(stamp) {
+        const existingItem = acc.find(function(item) {
+          return item.title === stamp.title;
+        });
+    
+        if (existingItem) {
+          existingItem.values.push(stamp.value);
+          existingItem.total = existingItem.values.reduce(function(sum, value) {
+            return sum + value;
+          }, 0);
+        } else {
+          acc.push({
+            title: stamp.title,
+            values: [stamp.value],
+            total: stamp.value
+          });
+        }
+      });
+    
+      return acc;
+    }, []);
+
+    console.log('updatedStamps:: ',updatedStamps);
+    
     
     return {
     ...student._doc,
+    updatedStamps: updatedStamps,
     totalNow: totalSum
     };
     });

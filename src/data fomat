@@ -20,3 +20,4 @@ const dbStudents = [
 ]
 
 const currStamps = [ {month:5, stamps:[{stamp_id:1, title:'밥', value:1},{stamp_id:2, title:'공부', value:2}], total:3 },{ month:6, stamps:[{stamp_id:1, title:'밥', value:0},{stamp_id:2, title:'공부', value:1}], total:1} ]
+const currStamps2 = [ stamps:[{stamp_id:1, title:'밥', value:1},{stamp_id:2, title:'공부', value:3}], totalNow:4]
