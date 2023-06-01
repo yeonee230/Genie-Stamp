@@ -167,6 +167,8 @@ async function onMonthChanged(newMonth, req) {
 
     
     console.log('✅ dbStudents 저장 성공 : ', dbStudents)
+    console.log('확인1!!! : ' , dbStudents[0].currStamps[0])
+    console.log('확인2!!! : ' , dbStudents[0].currStamps[0].month)
     
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
