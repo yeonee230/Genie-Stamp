@@ -20,11 +20,11 @@ export const getBoard = async (req, res) => {
     console.log('❗️ currentMonth !== newMonth');
     
     currentMonth = newMonth;
-    await onMonthChanged(currentMonth, req);
+    await onMonthChanged(currentMonth, req, res);
   }else{ // 같을 때 
     //디비에 해당월 있는지 확인해야함 
     console.log('✅ currentMonth === newMonth');
-    await checkDB(newMonth, req);
+    await checkDB(newMonth, req, res);
   }
 
 
@@ -143,7 +143,7 @@ export const rankingTotalStamps = async (req, res) => {
 
 //----
 // 월 변경 시 실행할 함수
-async function onMonthChanged(newMonth, req) {
+async function onMonthChanged(newMonth, req, res) {
   try {
     console.log('onMonthChanged 실행')
     // 월이 변경되었을 때 호출되는 콜백 함수로, 여기에 MongoDB에 월을 추가하는 로직을 작성합니다.
@@ -173,17 +173,18 @@ async function onMonthChanged(newMonth, req) {
     console.log('확인1-2!!! : ' , dbStudents[0].currStamps[1])
     console.log('확인2-2!!! : ' , dbStudents[0].currStamps[1].month)
 
+    return res.redirect('/')
     
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
   }
 }
 
-async function checkDB(newMonth, req){
+async function checkDB(newMonth, req, res){
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id }).exec();
 
   if(dbStudents[0].currStamps[0].month !== newMonth){
-    await onMonthChanged(newMonth, req);
+    await onMonthChanged(newMonth, req, res);
   }
 }
