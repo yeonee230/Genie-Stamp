@@ -138,15 +138,24 @@ export const rankingTotalStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
 
-  for (const student of dbStudents) {
+  // for (const student of dbStudents) {
+  //   const totalSum = student.currStamps.reduce(function (acc, curr) {
+  //     return acc + curr.total;
+  //   }, 0);
+  //   console.log(`${student.name}의 totalSum : `, totalSum);
+  // }
+    const sortedStudents = dbStudents.sort(function (a, b) {
+    const sumA = a.currStamps.reduce((acc, curr) => acc + curr.total, 0);
+    const sumB = b.currStamps.reduce((acc, curr) => acc + curr.total, 0);
+    return sumB - sumA;
+  });
+  console.log(' 💗 sortedStudents1: ',sortedStudents);
+  // 순위 매기기
+  sortedStudents.forEach(function (student, index) {
+    student.rank = index + 1;
+  });
 
-    const totalSum = student.currStamps.reduce(function (acc, curr) {
-      return acc + curr.total;
-    }, 0);
-
-    console.log(`${student.name}의 totalSum : `, totalSum);
-  }
-
+  console.log(' 💗💗 sortedStudents2: ',sortedStudents);
 };
 
 // 월 변경 시 실행할 함수
