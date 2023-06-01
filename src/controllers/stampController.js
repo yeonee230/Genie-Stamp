@@ -11,7 +11,7 @@ export const getBoard = async (req, res) => {
 
   //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
-  let currentMonth = null; // 현재 월 변수
+  let currentMonth = 6; // 현재 월 변수
 
   console.log('월 변경 감지 newMonth : ', newMonth);
   console.log('월 변경 감지 currentMonth : ', currentMonth);
@@ -20,11 +20,11 @@ export const getBoard = async (req, res) => {
     console.log('❗️ currentMonth !== newMonth');
     
     currentMonth = newMonth;
-    onMonthChanged(currentMonth, req);
+    await onMonthChanged(currentMonth, req);
   }else{ // 같을 때 
     //디비에 해당월 있는지 확인해야함 
     console.log('✅ currentMonth === newMonth');
-    checkDB(newMonth, req);
+    await checkDB(newMonth, req);
   }
 
 
@@ -159,7 +159,9 @@ async function onMonthChanged(newMonth, req) {
     for (const student of dbStudents) {
       console.log('student1 : ', student)
       student.currStamps.push({ month: newMonth, stamps, total: 0 });
-      await student.save();
+      await student.save().catch(error => {
+        console.error('학생 data의 new month 저장 중 에러가 발생했습니다.', error);
+      });;
       console.log('student2 : ', student)
     }
 
@@ -176,6 +178,6 @@ async function checkDB(newMonth, req){
   const dbStudents = await StudentModel.find({ teacherId: _id }).exec();
 
   if(dbStudents[0].currStamps[0].month !== newMonth){
-    onMonthChanged(newMonth, req);
+    await onMonthChanged(newMonth, req);
   }
 }
