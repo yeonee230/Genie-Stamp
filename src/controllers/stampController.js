@@ -6,6 +6,9 @@ export const getBoard = async (req, res) => {
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
 
+  //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
+
+
   //const data = students.forEach(student => ({... student, index:11}));
   const students = dbStudents.map((item) => ({
     ...item._doc,

@@ -174,12 +174,13 @@ export const postAddStudent = async (req, res) => {
 
   const stamps = await StampModel.find({ teacherId: _id });
 
+  //stamp2 : 교사 id로 디비에서 가져온 stamps(공부, 밥, ..) 에 객체를 넣어주는 거  
   const stamp2 = stamps.map((item) => ({
     stamp_id: String(item._id),
     value: 0,
     title: item.title,
   }));
-  console.log("stamp2", stamp2);
+  console.log("stamp2", stamp2); // [{stamp_id:1, value:0, title: '밥'},{stamp_id:2, value:0, title: '공부'}...]
 
   //학생 데이터 저장
   const newStudent = await StudentModel.create({
