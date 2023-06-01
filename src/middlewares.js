@@ -30,17 +30,27 @@ export const publicOnlyMiddleware = (req, res, next) => {
 };
 
   // 월 변경 감지
-export const monthCheckMiddleware = (req, res, next) => {
+export  const monthCheckMiddleware =  (req, res, next) => {
   console.log('월 변경 감지 ---- ');
   let currentMonth = null; // 현재 월 변수
   const time = 1000 * 60; //하루  1000*60*60*24
+
+  
   setInterval(() => {
     const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
+
+    console.log('월 변경 감지 : ', newMonth);
+    console.log('월 변경 감지 currentMonth : ', currentMonth);
+
     if (currentMonth !== newMonth) {
       currentMonth = newMonth;
       onMonthChanged(currentMonth, req);
+    }else{ // 같을 때 
+      //디비에 해당월 있는지 확인해야함 
+      checkDB(newMonth, req);
+    
     }
-    console.log('월 변경 감지 : ', newMonth);
+    
   }, time); // time 마다 월 변경 감지
 
   next();
@@ -58,7 +68,7 @@ async function onMonthChanged(newMonth, req) {
 
     console.log('dbStudents : ', dbStudents)
     console.log('stamps : ', stamps)
-    
+
     // 학생 도장데이터에 새로운 month 추가하기
     for (const student of dbStudents) {
       student.currStamps.push({ month: newMonth, stamps, total: 0 });
@@ -66,5 +76,14 @@ async function onMonthChanged(newMonth, req) {
     }
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
+  }
+}
+
+async function checkDB(newMonth, req){
+  const { _id } = req.session.user;
+  const dbStudents = await StudentModel.find({ teacherId: _id }).exec();
+
+  if(dbStudents[0].currStamps[0].month !== newMonth){
+    onMonthChanged(newMonth, req);
   }
 }
