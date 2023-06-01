@@ -172,8 +172,6 @@ async function onMonthChanged(newMonth, req, res) {
 
     console.log('확인1-2!!! : ' , dbStudents[0].currStamps[1])
     console.log('확인2-2!!! : ' , dbStudents[0].currStamps[1].month)
-
-    return res.redirect('/')
     
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
