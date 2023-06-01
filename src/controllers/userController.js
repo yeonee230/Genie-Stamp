@@ -17,10 +17,11 @@ export const studentMain = async (req, res) => {
   const { _id } = req.session.user; // student Id
   const student = await StudentModel.findById({ _id });
   const stamps = await StampModel.find({ teacherId: student.teacherId });
+  const thisMonth = new Date().getMonth() + 1;
 
   //이번달 기록만 가져올 수 있도록
   const currValue = student.currStamps.filter(
-    (item) => item.month === new Date().getMonth() + 1
+    (item) => item.month === thisMonth
   );
 
   //전체 누적 도장 개수 
@@ -34,6 +35,7 @@ export const studentMain = async (req, res) => {
     pageTitle: "칭찬도장판",
     stamps,
     totalAll,
+    thisMonth,
     newStudent,
   });
 };
