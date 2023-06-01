@@ -115,6 +115,9 @@ export const rankingEachMonthStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
+  console.log('month: ' , month);
+  console.log('typeof month: ' , typeof month);
+  
 
   const filteredStudents = dbStudents
     .map((student) => ({
