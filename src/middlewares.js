@@ -73,7 +73,7 @@ async function onMonthChanged(newMonth, req) {
     for (const student of dbStudents) {
       console.log('student1 : ', student)
       student.currStamps.push({ month: newMonth, stamps, total: 0 });
-      await student.save();
+      await student.findOneAndUpdate();
       console.log('student2 : ', student)
     }
 
