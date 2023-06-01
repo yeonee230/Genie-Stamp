@@ -66,6 +66,9 @@ main {
   height: 4rem;
   width: 4rem;
   font-size: $regular_size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .no-data__message {
@@ -119,6 +122,15 @@ main {
     margin: 0.5rem 0.7rem;
     border-radius: 0.5rem;
     font-size: 20px;
+  }
+
+  .status__month {
+    padding: 0.5rem;
+    margin: 0.2rem;
+    border-radius: 0.7rem;
+    height: 3rem;
+    width: 3rem;
+    font-size: 18px;
   }
 
   .student__table {
