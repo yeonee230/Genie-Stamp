@@ -8,6 +8,8 @@ export const getBoard = async (req, res) => {
   const stamps = await StampModel.find({ teacherId: _id });
   const arr = dbStudents[0].currStamps;
   const lastValue = arr[arr.length - 1];
+  console.log(lastValue)
+  console.log(typeof lastValue)
 
   //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
