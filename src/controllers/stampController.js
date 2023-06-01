@@ -5,21 +5,17 @@ export const getBoard = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
-  const arr = dbStudents[0].currStamps;
+  const arr = dbStudents[0].currStamps; 
   const lastValue = arr[arr.length - 1];
 
-  //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
-  let currentMonth = lastValue.month; // 현재 월 변수
-
-  console.log('월 변경 감지 newMonth : ', newMonth);
-  console.log('월 변경 감지 currentMonth : ', currentMonth);
+  let currentMonth = lastValue.month; // 디비에 저장되어 있는 가장 최신 month 확인
 
   if (currentMonth !== newMonth) {
     console.log('❗️ currentMonth !== newMonth');
     currentMonth = newMonth;
     await onMonthChanged(currentMonth, req);
-  }else{ // 같을 때 
+  }else{ 
     console.log('✅ currentMonth === newMonth');
   }
 
@@ -152,7 +148,7 @@ async function onMonthChanged(newMonth, req) {
     // 학생 도장데이터에 새로운 month 추가하기
     for (const student of dbStudents) {
       console.log('student1 : ', student)
-      student.currStamps.push({ month: newMonth, stamps, total: 0 });
+      student.currStamps.push({ month: newMonth, stamps: stamps.map(stamp => ({... stamp, value:0 })), total: 0 });
       await student.save().catch(error => {
         console.error('학생 data의 new month 저장 중 에러가 발생했습니다.', error);
       });;
