@@ -23,11 +23,17 @@ export const studentMain = async (req, res) => {
     (item) => item.month === new Date().getMonth() + 1
   );
 
+  //전체 누적 도장 개수 
+  const totalAll = student.currStamps.reduce(function(acc, curr) {
+    return acc + curr.total;
+    }, 0);
+
   const newStudent = { ...student._doc, currStamps: currValue };
 
   return res.render("students/student-main", {
     pageTitle: "칭찬도장판",
     stamps,
+    totalAll,
     newStudent,
   });
 };

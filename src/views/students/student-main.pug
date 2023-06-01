@@ -11,8 +11,8 @@ block content
                     th=stamp.title
                 else 
                     h3.no-data__message ⚠️ 도장 데이터가 없습니다.
-                th 이번달
-                //- th 총누적
+                th 이번달 개수
+                th 총 누적 개수
             tr 
                 td#studentName(data-stu_id=newStudent._id)=newStudent.name 
                 each stamp in newStudent.currStamps
@@ -21,7 +21,7 @@ block content
                             div#stampId
                                 span#stampValue=info.value
                     td#totalValue.totalValue=stamp.total
-                //- td#allValue 도장수                       
+                td#allValue=totalAll                 
 
         //- div.wrapper 
         //-     div 스티커1 밥
