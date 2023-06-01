@@ -145,7 +145,7 @@ export const rankingTotalStamps = async (req, res) => {
     }, 0);
     
     return {
-    ...student,
+    ...student._doc,
     totalNow: totalSum
     };
     });
