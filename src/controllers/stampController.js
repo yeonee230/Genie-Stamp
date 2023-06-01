@@ -158,9 +158,9 @@ export const rankingTotalStamps = async (req, res) => {
     return sumB - sumA;
     });
  
-    // sortedStudents.forEach(function(student, index) {
-    // student.rank = index + 1;
-    // });
+    sortedStudents.forEach(function(student, index) {
+    student.ranking = index + 1;
+    });
     
     console.log('💗💗 sortedStudents: ', sortedStudents);
 
