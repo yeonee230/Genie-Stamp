@@ -138,28 +138,38 @@ export const rankingTotalStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
 
-  for (const student of dbStudents) {
-    const totalSum = student.currStamps.reduce(function (acc, curr) {
-      return acc + curr.total;
+  //누적 도장 값을 추가한 학생 배열을 만든다. 
+  const updatedStudents = dbStudents.map(function(student) {
+    const totalSum = student.currStamps.reduce(function(acc, curr) {
+    return acc + curr.total;
     }, 0);
-    console.log(`💗 ${student.name}의 totalSum : `, totalSum);
-    student.total = totalSum
-    console.log(`${student.name}의 student : `, student);
-  }
-  console.log(`최종 dbStudents : `, dbStudents);
+    
+    return {
+    ...student,
+    totalNow: totalSum
+    };
+    });
 
-  //   const sortedStudents = dbStudents.sort(function (a, b) {
-  //   const sumA = a.currStamps.reduce((acc, curr) => acc + curr.total, 0);
-  //   const sumB = b.currStamps.reduce((acc, curr) => acc + curr.total, 0);
-  //   return sumB - sumA;
-  // });
-  // console.log(' 💗 sortedStudents1: ',sortedStudents);
-  // // 순위 매기기
-  // sortedStudents.forEach(function (student, index) {
-  //   student.rank = index + 1;
-  // });
+    //학생 순위매기기 
+    const sortedStudents = updatedStudents.sort(function(a, b) {
+    const sumA = a.totalNow;
+    const sumB = b.totalNow;
+    return sumB - sumA;
+    });
+ 
+    // sortedStudents.forEach(function(student, index) {
+    // student.rank = index + 1;
+    // });
+    
+    console.log('💗💗 sortedStudents: ', sortedStudents);
 
-  // console.log(' 💗💗 sortedStudents2: ',sortedStudents);
+    return res.render('stats', {
+      pageTitle: '도장 통계',
+      stamps,
+      rankingStudnets: sortedStudents,
+    });
+
+  
 };
 
 // 월 변경 시 실행할 함수
