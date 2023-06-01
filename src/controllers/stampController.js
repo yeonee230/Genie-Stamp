@@ -9,7 +9,7 @@ export const getBoard = async (req, res) => {
 
   //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
-  let currentMonth = dbStudents[0].currStamps[0].month; // 현재 월 변수
+  let currentMonth = dbStudents[0].currStamps[dbStudents.length-1].month; // 현재 월 변수
 
   console.log('월 변경 감지 newMonth : ', newMonth);
   console.log('월 변경 감지 currentMonth : ', currentMonth);
@@ -162,13 +162,7 @@ async function onMonthChanged(newMonth, req) {
       console.log('student2 : ', student)
     }
 
-    
     console.log('✅ dbStudents 저장 성공 : ', dbStudents)
-    console.log('확인1!!! : ' , dbStudents[0].currStamps[0])
-    console.log('확인2!!! : ' , dbStudents[0].currStamps[0].month)
-
-    console.log('확인1-2!!! : ' , dbStudents[0].currStamps[1])
-    console.log('확인2-2!!! : ' , dbStudents[0].currStamps[1].month)
     
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
