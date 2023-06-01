@@ -8,6 +8,7 @@ export const getBoard = async (req, res) => {
   const arr = dbStudents[0].currStamps;
   const lastValue = arr[arr.length - 1];
 
+  // 매월 도장 리셋
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
   let currentMonth = lastValue.month; // 디비에 저장되어 있는 가장 최신 month 확인
 
@@ -77,7 +78,7 @@ export const editStampType = async (req, res) => {
 
 //-------------- 누적 도장 랭킹 가져오기 --------------
 //이번달 누적 도장 랭킹 가져오기
-export const rankingTotalStamps1 = async (req, res) => {
+export const rankingThisMonthStamps1 = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
@@ -107,8 +108,9 @@ export const rankingTotalStamps1 = async (req, res) => {
     rankingStudnets,
   });
 };
-// rankingTotalStamps 함수 리팩토링
-export const rankingTotalStamps = async (req, res) => {
+
+// rankingThisMonthStamps1 리팩토링 --- 이번달 누적 도장 개수 확인
+export const rankingThisMonthStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
@@ -131,23 +133,34 @@ export const rankingTotalStamps = async (req, res) => {
   });
 };
 
-//----
+// 전체 누적 도장 개수 랭킹 확인
+export const rankingTotalStamps = async (req, res) => {
+  const { _id } = req.session.user;
+  const dbStudents = await StudentModel.find({ teacherId: _id });
+
+  for (const student of dbStudents) {
+    const totalArr = student.currStamps.map((stamp) => {
+      stamp.total;
+    });
+
+    let totalValue = 0;
+    totalArr.forEach(function (num) {
+      totalValue += num;
+    });
+    console.log(`${student.name}의 totalValue`, totalValue);
+  }
+  
+};
+
 // 월 변경 시 실행할 함수
 async function onMonthChanged(newMonth, req) {
   try {
-    console.log('onMonthChanged 실행');
-
     const { _id } = req.session.user; // 선생님이 누군지 찾고
-    console.log('_id : ', _id);
     const dbStudents = await StudentModel.find({ teacherId: _id }).exec(); // 선생님의 학생들을 모두 찾고
     const stamps = await StampModel.find({ teacherId: _id }).exec(); // 선생님의 도장을 모두 찾고
 
-    console.log('dbStudents : ', dbStudents);
-    console.log('stamps : ', stamps);
-
     // 학생 도장데이터에 새로운 month 추가하기
     for (const student of dbStudents) {
-      console.log('student1 : ', student);
       student.currStamps.push({
         month: newMonth,
         stamps: stamps.map((stamp) => ({
@@ -163,7 +176,6 @@ async function onMonthChanged(newMonth, req) {
           error
         );
       });
-      console.log('student2 : ', student);
     }
 
     console.log('✅ dbStudents 저장 성공 : ', dbStudents);
