@@ -7,6 +7,7 @@ const studentName = document.getElementById("studentName");
 const totalValue = document.getElementById("totalValue");
 
 
+
 //+ 버튼 클릭시
 increaseBtns.forEach((cell) => {
   cell.addEventListener("click", async () => {
@@ -73,3 +74,4 @@ decreaseBtns.forEach((cell) => {
     });
   });
 });
+
