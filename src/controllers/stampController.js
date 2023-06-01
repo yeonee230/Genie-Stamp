@@ -118,12 +118,14 @@ export const rankingEachMonthStamps = async (req, res) => {
   console.log('month: ' , month);
   console.log('typeof month: ' , typeof month);
   
+  console.log('dbStudents: ',dbStudents);
+  
 
   const filteredStudents = dbStudents
     .map((student) => ({
       ...student._doc,
       currStamps: student.currStamps.filter(
-        (stamp) => (stamp.month === month)
+        (stamp) => (stamp.month === 5)
       ),
     }))
     // .filter((student) => student.currStamps.length > 0)
