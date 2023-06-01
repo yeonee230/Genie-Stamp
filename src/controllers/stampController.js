@@ -7,57 +7,22 @@ export const getBoard = async (req, res) => {
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
 
-
-
   //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
-  let currentMonth = 6; // 현재 월 변수
+  let currentMonth = dbStudents[0].currStamps[0].month; // 현재 월 변수
 
   console.log('월 변경 감지 newMonth : ', newMonth);
   console.log('월 변경 감지 currentMonth : ', currentMonth);
 
-  try {
-    console.log(' 디비 저장 실행')
-    // 월이 변경되었을 때 호출되는 콜백 함수로, 여기에 MongoDB에 월을 추가하는 로직을 작성합니다.
-   
-    const dbStudents = await StudentModel.find({ teacherId: _id }).exec(); // 선생님의 학생들을 모두 찾고
-    const stamps = await StampModel.find({ teacherId: _id }).exec(); // 선생님의 도장을 모두 찾고
-
-    console.log('dbStudents : ', dbStudents)
-    console.log('stamps : ', stamps)
-
-    // 학생 도장데이터에 새로운 month 추가하기
-    for (const student of dbStudents) {
-      console.log('student1 : ', student)
-      student.currStamps.push({ month: newMonth, stamps, total: 0 });
-      await student.save().catch(error => {
-        console.error('학생 data의 new month 저장 중 에러가 발생했습니다.', error);
-      });;
-      console.log('student2 : ', student)
-    }
-
-    
-    console.log('✅ dbStudents 저장 성공 : ', dbStudents)
-    console.log('확인1!!! : ' , dbStudents[0].currStamps[0])
-    console.log('확인2!!! : ' , dbStudents[0].currStamps[0].month)
-
-    console.log('확인1-2!!! : ' , dbStudents[0].currStamps[1])
-    console.log('확인2-2!!! : ' , dbStudents[0].currStamps[1].month)
-    
-  } catch (error) {
-    console.error('월 변경 중 에러가 발생했습니다.', error);
+  if (currentMonth !== newMonth) {
+    console.log('❗️ currentMonth !== newMonth');
+    currentMonth = newMonth;
+    await onMonthChanged(currentMonth, req);
+  }else{ // 같을 때 
+    //디비에 해당월 있는지 확인해야함 
+    console.log('✅ currentMonth === newMonth');
+    await checkDB(newMonth, req);
   }
-
-  // if (currentMonth !== newMonth) {
-  //   console.log('❗️ currentMonth !== newMonth');
-    
-  //   currentMonth = newMonth;
-  //   await onMonthChanged(currentMonth, req);
-  // }else{ // 같을 때 
-  //   //디비에 해당월 있는지 확인해야함 
-  //   console.log('✅ currentMonth === newMonth');
-  //   await checkDB(newMonth, req);
-  // }
 
 
 
@@ -178,7 +143,7 @@ export const rankingTotalStamps = async (req, res) => {
 async function onMonthChanged(newMonth, req) {
   try {
     console.log('onMonthChanged 실행')
-    // 월이 변경되었을 때 호출되는 콜백 함수로, 여기에 MongoDB에 월을 추가하는 로직을 작성합니다.
+   
     const { _id } = req.session.user; // 선생님이 누군지 찾고
     console.log('_id : ', _id)
     const dbStudents = await StudentModel.find({ teacherId: _id }).exec(); // 선생님의 학생들을 모두 찾고
