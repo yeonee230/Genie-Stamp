@@ -77,7 +77,7 @@ async function onMonthChanged(newMonth, req) {
       console.log('student2 : ', student)
     }
 
-    await dbStudents.save();
+    
     console.log('✅ dbStudents 저장 성공 : ', dbStudents)
     
   } catch (error) {
