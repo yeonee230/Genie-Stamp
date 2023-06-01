@@ -9,7 +9,6 @@ export const localsMiddleware = (req, res, next) => {
   next();
 };
 
-//TODO:url protectMiddleware 만들어야함
 //로그인한 사용자만 사용 가능.
 export const protectMiddeleware = (req, res, next) => {
   if (req.session.loggedIn) {
@@ -30,8 +29,8 @@ export const publicOnlyMiddleware = (req, res, next) => {
   }
 };
 
-export const monthCheckMiddleware = (req, res, next) => {
   // 월 변경 감지
+export const monthCheckMiddleware = (req, res, next) => {
   console.log('월 변경 감지 ---- ');
   let currentMonth = null; // 현재 월 변수
   const time = 1000 * 10; //하루  1000*60*60*24

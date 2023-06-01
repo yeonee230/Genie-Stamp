@@ -3,7 +3,7 @@ import morgan from "morgan";
 import session from "express-session";
 import rootRouter from "./routers/rootRouter";
 import settingtRouter from "./routers/settingRouter";
-import { localsMiddleware } from "./middlewares";
+import { localsMiddleware, monthCheckMiddleware } from "./middlewares";
 import MongoStore from "connect-mongo";
 import studentRouter from "./routers/studentRouter";
 import stampRouter from "./routers/stampRouter";
@@ -27,6 +27,7 @@ app.use(
   })
 );
 app.use(localsMiddleware);
+app.use(monthCheckMiddleware);
 
 //multer 미들웨어 
 //app.use("/uploads",express.static("uploads"));
