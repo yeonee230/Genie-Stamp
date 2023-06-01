@@ -109,8 +109,9 @@ export const rankingThisMonthStamps1 = async (req, res) => {
   });
 };
 
-// rankingThisMonthStamps1 리팩토링 --- 이번달 누적 도장 개수 확인
-export const rankingThisMonthStamps = async (req, res) => {
+// rankingThisMonthStamps1 리팩토링 --- 월별 누적 도장 개수 확인
+export const rankingEachMonthStamps = async (req, res) => {
+  const {month} = req.params;
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
@@ -119,7 +120,7 @@ export const rankingThisMonthStamps = async (req, res) => {
     .map((student) => ({
       ...student._doc,
       currStamps: student.currStamps.filter(
-        (stamp) => stamp.month === new Date().getMonth() + 1
+        (stamp) => stamp.month === month
       ),
     }))
     .filter((student) => student.currStamps.length > 0)
