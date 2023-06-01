@@ -125,6 +125,7 @@ export const rankingEachMonthStamps = async (req, res) => {
   const filteredStudents = dbStudents
     .map((student) => ({
       ...student._doc,
+      month,
       currStamps: student.currStamps.filter(
         (stamp) => (stamp.month === parseInt(month))
       ),
