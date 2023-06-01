@@ -13,7 +13,7 @@ export const getBoard = async (req, res) => {
 
   //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
-  let currentMonth = dbStudents[0].currStamps[lastValue].month; // 현재 월 변수
+  let currentMonth = lastValue.month; // 현재 월 변수
 
   console.log('월 변경 감지 newMonth : ', newMonth);
   console.log('월 변경 감지 currentMonth : ', currentMonth);
