@@ -5,9 +5,10 @@ block content
     h1.title 월별 도장 통계
     include partials/month-nav.pug
     if rankingEachMonthStudnets
-        h2 #{month} 월
+        h2.status__month #{month} 월
         table.status__table  
             tr
+                th 순위
                 th 번호
                 th 이름
                 each stamp in stamps

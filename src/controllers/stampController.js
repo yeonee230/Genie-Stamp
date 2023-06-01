@@ -115,12 +115,6 @@ export const rankingEachMonthStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
   const stamps = await StampModel.find({ teacherId: _id });
-  console.log('month: ' , month);
-  console.log('typeof month: ' , typeof month);
-  console.log('parseInt month: ' , parseInt(month));
-  
-  console.log('dbStudents: ',dbStudents);
-  
 
   const filteredStudents = dbStudents
     .map((student) => ({
@@ -132,9 +126,6 @@ export const rankingEachMonthStamps = async (req, res) => {
     .filter((student) => student.currStamps.length > 0)
     .sort((a, b) => b.currStamps[0].total - a.currStamps[0].total)
     .map((student, index) => ({ ...student, ranking: index + 1 }));
-
-    console.log('✅ filteredStudents: ', filteredStudents);
-    
 
   return res.render('stats', {
     pageTitle: '도장 통계',
@@ -181,17 +172,12 @@ export const rankingTotalStamps = async (req, res) => {
       return acc;
     }, []);
 
-    console.log('⭐️ updatedStamps:: ',updatedStamps);
-    
-    
     return {
     ...student._doc,
     updatedStamps: updatedStamps,
     totalNow: totalSum
     };
     });
-
-    console.log('⭐️⭐️ updatedStudents:: ',updatedStudents);
 
     //학생 순위매기기 
     const sortedStudents = updatedStudents.sort(function(a, b) {
@@ -203,8 +189,6 @@ export const rankingTotalStamps = async (req, res) => {
     sortedStudents.forEach(function(student, index) {
     student.ranking = index + 1;
     });
-    
-    console.log('💗💗 sortedStudents: ', sortedStudents);
 
     return res.render('stats', {
       pageTitle: '도장 통계',
