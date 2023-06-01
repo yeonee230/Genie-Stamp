@@ -73,11 +73,13 @@ async function onMonthChanged(newMonth, req) {
     for (const student of dbStudents) {
       console.log('student1 : ', student)
       student.currStamps.push({ month: newMonth, stamps, total: 0 });
-      await student.findOneAndUpdate();
+      await student.save();
       console.log('student2 : ', student)
     }
 
+    await dbStudents.save();
     console.log('✅ dbStudents 저장 성공 : ', dbStudents)
+    
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
   }
