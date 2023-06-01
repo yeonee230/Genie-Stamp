@@ -33,7 +33,7 @@ export const publicOnlyMiddleware = (req, res, next) => {
 export  const monthCheckMiddleware =  (req, res, next) => {
   console.log('월 변경 감지 ---- ');
   let currentMonth = null; // 현재 월 변수
-  const time = 1000 * 60; //하루  1000*60*60*24
+  const time = 1000 * 5; //하루  1000*60*60*24
 
   
   setInterval(() => {
@@ -71,9 +71,13 @@ async function onMonthChanged(newMonth, req) {
 
     // 학생 도장데이터에 새로운 month 추가하기
     for (const student of dbStudents) {
+      console.log('student1 : ', student)
       student.currStamps.push({ month: newMonth, stamps, total: 0 });
       await student.save();
+      console.log('student2 : ', student)
     }
+
+    console.log('✅ dbStudents 저장 성공 : ', dbStudents)
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
   }
