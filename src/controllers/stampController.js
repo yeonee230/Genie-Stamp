@@ -138,17 +138,13 @@ export const rankingTotalStamps = async (req, res) => {
   const { _id } = req.session.user;
   const dbStudents = await StudentModel.find({ teacherId: _id });
 
-  console.log(dbStudents)
   for (const student of dbStudents) {
-    const totalArr = student.currStamps.map((stamp) => {
-      stamp.total;
-    });
 
-    let totalValue = 0;
-    totalArr.forEach(function (num) {
-      totalValue += num;
-    });
-    //console.log(`${student.name}의 totalValue`, totalValue);
+    const totalSum = currStamps.reduce(function (acc, curr) {
+      return acc + curr.total;
+    }, 0);
+
+    console.log(`${student.name}의 totalSum : `, totalSum);
   }
 
 };

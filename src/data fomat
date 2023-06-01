@@ -1,0 +1,22 @@
+const dbStudents = [
+    {
+     _id: new ObjectId("644f654e1aa8ade93186ef10"),
+     name: '서지혁',
+     index: 1,
+     password: '0000',
+     currStamps: [ {month:5, stamps:[{stamp_id:1, title:'밥', value:1},{stamp_id:2, title:'공부', value:2}], total:3 },{ month:6, stamps:[{stamp_id:1, title:'밥', value:0},{stamp_id:2, title:'공부', value:1}], total:1} ],
+     teacherId: new ObjectId("644f62521aa8ade93186edfb"),
+     __v: 1
+     },
+     {
+     _id: new ObjectId("644f65591aa8ade93186ef17"),
+     name: '박무현',
+     index: 2,
+     password: '0000',
+     currStamps: [ {month:5, stamps:[{stamp_id:1, title:'밥', value:2},{stamp_id:2, title:'공부', value:2}], total:4 },{ month:6, stamps:[{stamp_id:1, title:'밥', value:1},{stamp_id:2, title:'공부', value:1}], total:2} ],
+     teacherId: new ObjectId("644f62521aa8ade93186edfb"),
+     __v: 1
+     }
+]
+
+const currStamps = [ {month:5, stamps:[{stamp_id:1, title:'밥', value:1},{stamp_id:2, title:'공부', value:2}], total:3 },{ month:6, stamps:[{stamp_id:1, title:'밥', value:0},{stamp_id:2, title:'공부', value:1}], total:1} ]
