@@ -127,10 +127,13 @@ export const rankingEachMonthStamps = async (req, res) => {
     .sort((a, b) => b.currStamps[0].total - a.currStamps[0].total)
     .map((student, index) => ({ ...student, ranking: index + 1 }));
 
+    console.log('✅ filteredStudents: ', filteredStudents);
+    
+
   return res.render('stats', {
     pageTitle: '도장 통계',
     stamps,
-    rankingStudnets: filteredStudents,
+    rankingEachMonthStudnets: filteredStudents,
   });
 };
 

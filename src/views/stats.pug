@@ -4,18 +4,33 @@ include mixins/stamp-block
 block content 
     h1.title 월별 도장 통계
     include partials/month-nav.pug
-    //- h2 5월
-    //- table 
-    //-     tr
-    //-         th 번호
-    //-         th 이름
-    //-         each stamp in stamps
-    //-             th=stamp.title
-    //-         else 
-    //-             li 도장이 없습니다.
-    //-         th 이번달 총 개수
-    //-         th 누적 개수
-    //- hr
+    if rankingEachMonthStudnets
+        h2 0월
+        table 
+            tr
+                th 번호
+                th 이름
+                each stamp in stamps
+                    th=stamp.title
+                else 
+                    h3.no-data__message ⚠️ 도장이 없습니다. 도장을 추가하세요.
+                th 이번달 총 개수
+            tr
+                 each student in rankingEachMonthStudnets
+                    tr
+                        td #{student.ranking} 위
+                        td=student.index 
+                        td#studentName(data-stu_id=student._id)=student.name 
+                        each stamp in student.currStamps
+                            each info in stamp.stamps
+                                td#stampBlock
+                                    div#stampId
+                                        span#stampValue=info.value
+                            td#totalValue.totalValue=stamp.total
+                        //- td#allValue 총 누적 도장수 
+                else 
+                    h3.no-data__message ⚠️ 학생 데이터가 없습니다.
+    hr
     h1.title 누적 도장 수
     h2.setting__explain ❗️ 학생별 도장 누적 순위를 확인할 수 있습니다.
     div.ranking-btn__list  
