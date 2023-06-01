@@ -1,4 +1,3 @@
-import { monthCheckMiddleware } from "../middlewares";
 import StampModel from "../models/Stamp";
 import StudentModel from "../models/Student";
 
@@ -8,8 +7,6 @@ export const getBoard = async (req, res) => {
   const stamps = await StampModel.find({ teacherId: _id });
   const arr = dbStudents[0].currStamps;
   const lastValue = arr[arr.length - 1];
-  console.log(lastValue)
-  console.log(typeof lastValue)
 
   //만약 오늘이 6월이면 디비에 6월 도장들을 넣어라 
   const newMonth = new Date().getMonth() + 1; // 현재 월 가져오기 (1월: 1, 2월: 2, ...)
@@ -23,12 +20,8 @@ export const getBoard = async (req, res) => {
     currentMonth = newMonth;
     await onMonthChanged(currentMonth, req);
   }else{ // 같을 때 
-    //디비에 해당월 있는지 확인해야함 
     console.log('✅ currentMonth === newMonth');
-    await checkDB(newMonth, req);
   }
-
-
 
   //const data = students.forEach(student => ({... student, index:11}));
   const students = dbStudents.map((item) => ({
@@ -170,14 +163,5 @@ async function onMonthChanged(newMonth, req) {
     
   } catch (error) {
     console.error('월 변경 중 에러가 발생했습니다.', error);
-  }
-}
-
-async function checkDB(newMonth, req){
-  const { _id } = req.session.user;
-  const dbStudents = await StudentModel.find({ teacherId: _id }).exec();
-
-  if(dbStudents[0].currStamps[0].month !== newMonth){
-    await onMonthChanged(newMonth, req);
   }
 }

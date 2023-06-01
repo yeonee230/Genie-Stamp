@@ -3,7 +3,7 @@ import morgan from "morgan";
 import session from "express-session";
 import rootRouter from "./routers/rootRouter";
 import settingtRouter from "./routers/settingRouter";
-import { localsMiddleware, monthCheckMiddleware } from "./middlewares";
+import { localsMiddleware } from "./middlewares";
 import MongoStore from "connect-mongo";
 import studentRouter from "./routers/studentRouter";
 import stampRouter from "./routers/stampRouter";
