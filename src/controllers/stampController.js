@@ -140,7 +140,7 @@ export const rankingTotalStamps = async (req, res) => {
 
   for (const student of dbStudents) {
 
-    const totalSum = currStamps.reduce(function (acc, curr) {
+    const totalSum = student.currStamps.reduce(function (acc, curr) {
       return acc + curr.total;
     }, 0);
 
