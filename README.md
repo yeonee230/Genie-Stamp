@@ -86,6 +86,7 @@ https://genie-stamp.herokuapp.com/
 * 도장 이름 수정/삭제 
 * ~~매월 1일 도장판 자동리셋~~ ✅
 * ~~세션이 없는데, 세션 필요한 url들어갔을 경우 관리(url protector)~~ ✅
+* flash 기능 
 
 
 <!-- ## 겪었던 어려움
